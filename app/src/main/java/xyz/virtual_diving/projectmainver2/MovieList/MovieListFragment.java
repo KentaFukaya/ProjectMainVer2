@@ -26,12 +26,12 @@ import xyz.virtual_diving.projectmainver2.panframe.SimplePlayerActivity;
 
 public class MovieListFragment extends Fragment {
     private ListView lv;
-    private List<ListItem> list0 = MoveListMainActivity.list0;
-    private List<ListItem> list1 = MoveListMainActivity.list1;
+    private List<ListItem> list0 = MovieListActivity.list0;
+    private List<ListItem> list1 = MovieListActivity.list1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_list_view, null);
+        View view = inflater.inflate(R.layout.movielist_fragment, null);
         ImageArrayAdapter adapter;
         super.onActivityCreated(savedInstanceState);
         Bundle bundle = getArguments();
@@ -41,12 +41,12 @@ public class MovieListFragment extends Fragment {
         //0ページ目ならID順にソート
         //1ページ目ならVIEWOCNt順にソート
         if (page == 0) {
-            adapter = new ImageArrayAdapter(getActivity(), R.layout.list_view_image_item, list0);
+            adapter = new ImageArrayAdapter(getActivity(), R.layout.movielist_listitem, list0);
             lv.setAdapter(adapter);
         }
         if (page == 1) {
             Collections.sort(list1, new ViewCountComparator());
-            adapter = new ImageArrayAdapter(getActivity(), R.layout.list_view_image_item, list1);
+            adapter = new ImageArrayAdapter(getActivity(), R.layout.movielist_listitem, list1);
             lv.setAdapter(adapter);
         }
 

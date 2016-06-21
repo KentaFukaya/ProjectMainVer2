@@ -1,7 +1,10 @@
 package xyz.virtual_diving.projectmainver2.ZukanList;
 
+
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,23 +14,25 @@ import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
 import xyz.virtual_diving.projectmainver2.R;
 
 
+
 public class ZukanListActivity extends AppCompatActivity {
-    public static ArrayList<ZukanAdapterItem> Zukanitems = new ArrayList<ZukanAdapterItem>();
+    public static ArrayList<ZukanListItem> Zukanitems = new ArrayList<>();
     private static Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.zukan_activity_main);
+        setContentView(R.layout.zukanlist_main);
         ctx = this;
 
-       // setItemsfromDB();
+        //setItemsfromDB();
         getItemsformDB();//Itemsの内容のセット
 
         //ViewPagerのセット
-        ViewPager viewPager = (ViewPager) findViewById(R.id.zukanpager);
-        viewPager.setAdapter(new ZukanFragmentStatePagerAdapter(getSupportFragmentManager()));
-
+        FragmentManager manager = getSupportFragmentManager();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.zukanViewpager);
+        ZukanFragmentStatePagerAdapter adapter = new ZukanFragmentStatePagerAdapter(manager);
+        viewPager.setAdapter(adapter);
     }
     public static Context getContext() {
         return ctx;
@@ -51,7 +56,7 @@ public class ZukanListActivity extends AppCompatActivity {
     }
     //データベースの情報をとってくる。
     public void getItemsformDB(){
-        Zukanitems = new ArrayList<ZukanAdapterItem>();//ArrayListの初期化
+        Zukanitems = new ArrayList<>();//ArrayListの初期化
         ZukanDatabase.getAllImageUrlandFishName(Zukanitems);
     }
     /*
@@ -60,10 +65,10 @@ public class ZukanListActivity extends AppCompatActivity {
     /*
     public void setItems() {
 
-        Zukanitems = new ArrayList<ZukanAdapterItem>();//ArrayListの初期化
+        Zukanitems = new ArrayList<ZukanListItem>();//ArrayListの初期化
 
         for (int i = 0; i < 13; i++) {//13=魚の数
-            ZukanAdapterItem Zukanitem = new ZukanAdapterItem();
+            ZukanListItem Zukanitem = new ZukanListItem();
 
             if (i % 3 == 0) {//画像入れてるだけ
                 Zukanitem.setIcon(R.drawable.sakana);

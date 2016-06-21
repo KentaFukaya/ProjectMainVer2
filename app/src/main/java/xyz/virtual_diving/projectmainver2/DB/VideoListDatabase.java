@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.List;
 
 import xyz.virtual_diving.projectmainver2.MovieList.ListItem;
-import xyz.virtual_diving.projectmainver2.MovieList.MoveListMainActivity;
-import xyz.virtual_diving.projectmainver2.MovieList.MovieListFragment;
-import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailMain;
+import xyz.virtual_diving.projectmainver2.MovieList.MovieListActivity;
 
 /**
  * Created by b1014169 on 2016/06/15.
@@ -21,7 +19,7 @@ public class VideoListDatabase {
 
     // データの追加
     public static void setData(int id, String Title, String Contents, int ImageID, int ViewCount, String url) {
-        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MoveListMainActivity.getContext());
+        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MovieListActivity.getContext());
         mDb = helper.getWritableDatabase();
 
         // ContentValuesにデータを格納
@@ -43,7 +41,7 @@ public class VideoListDatabase {
 
     // id に対応するデータを返す
     public static void getAllData(List<ListItem> list) {
-        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MoveListMainActivity.getContext());
+        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MovieListActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(VideoListSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
         try {
@@ -66,7 +64,7 @@ public class VideoListDatabase {
 
     // id に対応するデータを返す
     public static ListItem getPositionData(int id) {
-        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MoveListMainActivity.getContext());
+        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MovieListActivity.getContext());
         mDb = helper.getWritableDatabase();
 
         ListItem item = new ListItem();
@@ -90,7 +88,7 @@ public class VideoListDatabase {
     //データベースの内容の変更
     //http://www.javadrive.jp/android/sqlite_data/index7.html
     public static void updateRow(int id, String Title, String Contents, int ImageID, int ViewCount, String url) {
-        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MoveListMainActivity.getContext());
+        VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MovieListActivity.getContext());
         SQLiteDatabase db = helper.getWritableDatabase();
         // ContentValuesにデータを格納
         ContentValues values = new ContentValues();

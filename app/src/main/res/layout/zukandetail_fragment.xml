@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/ZukanDetail_Contents"
+        android:layout_marginLeft="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:src="@drawable/zukandetail_action_back"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:id="@+id/ZukanDetail_Left"
+        android:layout_gravity="left|center_vertical" />
+
+    <ImageView
+        android:src="@drawable/zukandetail_action_forward"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:id="@+id/ZukanDetail_Right"
+        android:layout_gravity="right|center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:layout_marginRight="100dp"
+        android:id="@+id/ZukanDetail_PageCount"
+        android:layout_gravity="right|bottom" />
+
+
+</FrameLayout>

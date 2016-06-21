@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by b1014100 on 2016/06/13.
  */
 public class zukanDetailFragmentPagerAdapter extends FragmentPagerAdapter {
-   public static ZukanDetail zukanDetail = ZukanDetailMain.zukanDetail;
+   public static ZukanDetail zukanDetail = ZukanDetaiActivity.zukanDetail;
 
     public zukanDetailFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -22,7 +22,7 @@ public class zukanDetailFragmentPagerAdapter extends FragmentPagerAdapter {
         bundle.putInt("page", position);
 
         // Fragment をつくり Bundle をセットする
-        ZukanDetailCntentsTestFragment fragment = new ZukanDetailCntentsTestFragment();
+        ZukanDetailFragment fragment = new ZukanDetailFragment();
         fragment.setArguments(bundle);
 
         return fragment;

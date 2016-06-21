@@ -20,6 +20,7 @@
         <activity android:name=".ZukanDetail.ZukanDetailMain"/>
         <activity android:name=".MovieList.MoveListMainActivity"/>
         <activity android:name=".panframe.SimplePlayerActivity"/>
+        <activity android:name=".Quiz.QuizActivity"/>
     </application>
 
 </manifest>

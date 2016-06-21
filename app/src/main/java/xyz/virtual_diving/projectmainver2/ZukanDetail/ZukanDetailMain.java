@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
+import xyz.virtual_diving.projectmainver2.Quiz.QuizActivity;
 import xyz.virtual_diving.projectmainver2.R;
 
 public class ZukanDetailMain extends AppCompatActivity {
@@ -46,6 +47,8 @@ public class ZukanDetailMain extends AppCompatActivity {
         quizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),QuizActivity.class); //図鑑アクティビティにに飛ぶ処理
+                startActivity(intent);
                 Log.d("Zukan_detail", "onClick: QuziButton");
             }
         });

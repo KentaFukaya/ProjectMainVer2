@@ -69,7 +69,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.simple_player);
+        setContentView(R.layout.simpleplayer_main);
 
         _frameContainer = (ViewGroup) findViewById(R.id.framecontainer);
         _frameContainer.setBackgroundColor(0xFF000000);

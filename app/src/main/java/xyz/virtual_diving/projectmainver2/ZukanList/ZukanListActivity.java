@@ -25,16 +25,14 @@ public class ZukanListActivity extends AppCompatActivity {
         setContentView(R.layout.zukanlist_main);
         ctx = this;
 
+        //setItemsfromDB();
+        getItemsformDB();//Itemsの内容のセット
+
         //ViewPagerのセット
         FragmentManager manager = getSupportFragmentManager();
         ViewPager viewPager = (ViewPager) findViewById(R.id.zukanViewpager);
         ZukanFragmentStatePagerAdapter adapter = new ZukanFragmentStatePagerAdapter(manager);
         viewPager.setAdapter(adapter);
-
-        setItemsfromDB();
-        getItemsformDB();//Itemsの内容のセット
-
-
     }
     public static Context getContext() {
         return ctx;

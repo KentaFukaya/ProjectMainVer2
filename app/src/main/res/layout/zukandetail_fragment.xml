@@ -13,14 +13,14 @@
         android:layout_height="match_parent" />
 
     <ImageView
-        android:src="@drawable/ic_action_back"
+        android:src="@drawable/zukandetail_action_back"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:id="@+id/ZukanDetail_Left"
         android:layout_gravity="left|center_vertical" />
 
     <ImageView
-        android:src="@drawable/ic_action_forward"
+        android:src="@drawable/zukandetail_action_forward"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:id="@+id/ZukanDetail_Right"

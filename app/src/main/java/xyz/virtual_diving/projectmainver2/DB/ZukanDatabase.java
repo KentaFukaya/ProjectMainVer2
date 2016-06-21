@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
+import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetaiActivity;
 import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetail;
-import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailMain;
 import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
 import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListItem;
 
@@ -64,7 +64,7 @@ public class ZukanDatabase {
 
     // id に対応するすべてのデータを返す
     public static void getAllDatabyId(ZukanDetail item, int id) {
-        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanDetailMain.getContext());
+        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanDetaiActivity.getContext());
         mDb = helper.getWritableDatabase();
 
         String[] contents = new String[3];

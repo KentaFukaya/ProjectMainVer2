@@ -23,7 +23,7 @@
                 android:layout_height="130dp"
                 android:layout_margin="10dp"
                 android:layout_weight="0.41"
-                android:src="@drawable/sakana2"/>
+                android:src="@drawable/zukanlist_sakana2"/>
 
             <TextView
                 android:id="@+id/title1"

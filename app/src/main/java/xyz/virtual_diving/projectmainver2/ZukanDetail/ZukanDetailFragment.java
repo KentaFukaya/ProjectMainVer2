@@ -21,7 +21,7 @@ public class ZukanDetailFragment extends Fragment {
 
         Bundle args = getArguments();
         position = args.getInt("page",0);
-        contents = ZukanDetailMain.zukanDetail.getContents();
+        contents = ZukanDetaiActivity.zukanDetail.getContents();
 
 
         //説明文の表示

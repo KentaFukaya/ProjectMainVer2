@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import xyz.virtual_diving.projectmainver2.R;
-import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailMain;
+import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetaiActivity;
 
 /**
  * Created by b1014248 on 2016/06/17.
@@ -42,7 +42,7 @@ public class ZukanFragment extends Fragment {
         item = items.get(pos++);
         ImageView image1 = (ImageView) layout.findViewById(R.id.image1);
         TextView title1 = (TextView) layout.findViewById(R.id.title1);
-        image1.setImageResource(R.drawable.sakana0+item.getIcon());
+        image1.setImageResource(R.drawable.zukanlist_sakana0+item.getIcon());
         title1.setText(item.getT());
 
         //2個目のコンテンツセット
@@ -50,7 +50,7 @@ public class ZukanFragment extends Fragment {
             item = items.get(pos++);
             ImageView image2 = (ImageView) layout.findViewById(R.id.image2);
             TextView title2 = (TextView) layout.findViewById(R.id.title2);
-            image2.setImageResource(R.drawable.sakana0+item.getIcon());
+            image2.setImageResource(R.drawable.zukanlist_sakana0+item.getIcon());
             title2.setText(item.getT());
         }
         //3個目のコンテンツセット
@@ -58,7 +58,7 @@ public class ZukanFragment extends Fragment {
             item = items.get(pos++);
             ImageView image3 = (ImageView) layout.findViewById(R.id.image3);
             TextView title3 = (TextView) layout.findViewById(R.id.title3);
-            image3.setImageResource(R.drawable.sakana0+item.getIcon());
+            image3.setImageResource(R.drawable.zukanlist_sakana0+item.getIcon());
             title3.setText(item.getT());
         }
 
@@ -69,7 +69,7 @@ public class ZukanFragment extends Fragment {
             @Override
             public  void onClick(View v){
                 Log.d("Test", "onClick: ZukanItem1 pos = "+pos);
-                Intent intent = new Intent(getActivity(),ZukanDetailMain.class); //図鑑アクティビティにに飛ぶ処理
+                Intent intent = new Intent(getActivity(),ZukanDetaiActivity.class); //図鑑アクティビティにに飛ぶ処理
                 intent.putExtra("id",pos);
                 startActivity(intent);
             }
@@ -78,7 +78,7 @@ public class ZukanFragment extends Fragment {
         ZukanListItem2.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent = new Intent(getActivity(),ZukanDetailMain.class); //図鑑アクティビティにに飛ぶ処理
+                Intent intent = new Intent(getActivity(),ZukanDetaiActivity.class); //図鑑アクティビティにに飛ぶ処理
                 intent.putExtra("id",pos+1);
                 startActivity(intent);
                 Log.d("Test", "onClick: ZukanItem2 pos = "+pos+1);
@@ -88,7 +88,7 @@ public class ZukanFragment extends Fragment {
         ZukanListItem3.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent = new Intent(getActivity(),ZukanDetailMain.class); //図鑑アクティビティにに飛ぶ処理
+                Intent intent = new Intent(getActivity(),ZukanDetaiActivity.class); //図鑑アクティビティにに飛ぶ処理
                 intent.putExtra("id",pos+2);
                 startActivity(intent);
                 Log.d("Test", "onClick: ZukanItem3 pos = "+pos+2);

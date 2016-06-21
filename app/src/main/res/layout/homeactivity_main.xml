@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/FGButton"
-            android:background="@drawable/fgicon"
+            android:background="@drawable/homeactivity_fgicon"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="bottom" />
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Logo"
-        android:src="@drawable/titlelogo"
+        android:src="@drawable/homeactivity_titlelogo"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="124dp" />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/VDButton"
-        android:background="@drawable/dmicon"
+        android:background="@drawable/homeactivity_dmicon"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp" />

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
         <ImageButton
-            android:src="@drawable/ic_action_back"
+            android:src="@drawable/zukandetail_action_back"
             android:background="@null"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -23,7 +23,7 @@
             android:layout_weight="1"
             />
         <ImageButton
-            android:src="@drawable/quiz"
+            android:src="@drawable/zukandetail_quiz"
             android:background="@null"
             android:layout_width="50dp"
             android:layout_height="50dp"

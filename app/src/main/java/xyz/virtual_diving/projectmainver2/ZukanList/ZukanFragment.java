@@ -20,12 +20,12 @@ import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailMain;
  * Created by b1014248 on 2016/06/17.
  */
 public class ZukanFragment extends Fragment {
-    ArrayList<ZukanAdapterItem> items;
-    ZukanAdapterItem item;
+    ArrayList<ZukanListItem> items;
+    ZukanListItem item;
     int pos;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.zukanfragment, null);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.zukanlist_fragmnet, null);
         /*ページもってくるとして
         　page=0 item(0)1.2
           page=1 item 3.4.5

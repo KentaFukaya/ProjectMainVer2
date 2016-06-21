@@ -5,14 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import xyz.virtual_diving.projectmainver2.MovieList.ListItem;
-import xyz.virtual_diving.projectmainver2.MovieList.MoveListMainActivity;
 import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetail;
 import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetailMain;
-import xyz.virtual_diving.projectmainver2.ZukanList.ZukanAdapterItem;
 import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
+import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListItem;
 
 /*
  * Created by b1014169 on 2016/06/15.
@@ -48,13 +45,13 @@ public class ZukanDatabase {
     }
 
     // データベース上のすべてのImageURLとFishNameをZukanItemsにaddする。
-    public static void getAllImageUrlandFishName(ArrayList<ZukanAdapterItem> Zukanitems) {
+    public static void getAllImageUrlandFishName(ArrayList<ZukanListItem> Zukanitems) {
         ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanListActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
 
             while (c.moveToNext()) {
-                ZukanAdapterItem item = new ZukanAdapterItem();
+                ZukanListItem item = new ZukanListItem();
                 item.setId(c.getInt(0));
                 item.setIcon(c.getInt(1));
                 item.setTitle(c.getString(2));

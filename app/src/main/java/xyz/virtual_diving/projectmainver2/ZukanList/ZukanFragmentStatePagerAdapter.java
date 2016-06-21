@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by b1014248 on 2016/06/17.
  */
 public class ZukanFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
-    private ArrayList<ZukanAdapterItem> Zukanitems = ZukanListActivity.Zukanitems;
+    private ArrayList<ZukanListItem> Zukanitems = ZukanListActivity.Zukanitems;
 
     public ZukanFragmentStatePagerAdapter(FragmentManager fm) {
         super(fm);

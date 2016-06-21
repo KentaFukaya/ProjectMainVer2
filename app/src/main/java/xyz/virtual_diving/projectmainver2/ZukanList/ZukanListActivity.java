@@ -16,13 +16,13 @@ import xyz.virtual_diving.projectmainver2.R;
 
 
 public class ZukanListActivity extends AppCompatActivity {
-    public static ArrayList<ZukanAdapterItem> Zukanitems = new ArrayList<>();
+    public static ArrayList<ZukanListItem> Zukanitems = new ArrayList<>();
     private static Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.zukan_activity_main);
+        setContentView(R.layout.zukanlist_main);
         ctx = this;
 
         //ViewPagerのセット
@@ -67,10 +67,10 @@ public class ZukanListActivity extends AppCompatActivity {
     /*
     public void setItems() {
 
-        Zukanitems = new ArrayList<ZukanAdapterItem>();//ArrayListの初期化
+        Zukanitems = new ArrayList<ZukanListItem>();//ArrayListの初期化
 
         for (int i = 0; i < 13; i++) {//13=魚の数
-            ZukanAdapterItem Zukanitem = new ZukanAdapterItem();
+            ZukanListItem Zukanitem = new ZukanListItem();
 
             if (i % 3 == 0) {//画像入れてるだけ
                 Zukanitem.setIcon(R.drawable.sakana);

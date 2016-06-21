@@ -30,7 +30,6 @@ public class ZukanFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
         return fragment;
     }
 
-
     @Override
     public int getCount() {
         return getPageSize();

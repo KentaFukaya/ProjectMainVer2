@@ -7,12 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="xyz.virtual_diving.projectmainver2.ZukanList.Zukan.ZukanListActivity">
+    tools:context="xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity">
 
 
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/zukanpager"
+        android:id="@+id/zukanViewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v4.view.ViewPager>

@@ -1,7 +1,10 @@
 package xyz.virtual_diving.projectmainver2.ZukanList;
 
+
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,8 +14,9 @@ import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
 import xyz.virtual_diving.projectmainver2.R;
 
 
+
 public class ZukanListActivity extends AppCompatActivity {
-    public static ArrayList<ZukanAdapterItem> Zukanitems = new ArrayList<ZukanAdapterItem>();
+    public static ArrayList<ZukanAdapterItem> Zukanitems = new ArrayList<>();
     private static Context ctx;
 
     @Override
@@ -21,12 +25,15 @@ public class ZukanListActivity extends AppCompatActivity {
         setContentView(R.layout.zukan_activity_main);
         ctx = this;
 
-       // setItemsfromDB();
+        //ViewPagerのセット
+        FragmentManager manager = getSupportFragmentManager();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.zukanViewpager);
+        ZukanFragmentStatePagerAdapter adapter = new ZukanFragmentStatePagerAdapter(manager);
+        viewPager.setAdapter(adapter);
+
+        setItemsfromDB();
         getItemsformDB();//Itemsの内容のセット
 
-        //ViewPagerのセット
-        ViewPager viewPager = (ViewPager) findViewById(R.id.zukanpager);
-        viewPager.setAdapter(new ZukanFragmentStatePagerAdapter(getSupportFragmentManager()));
 
     }
     public static Context getContext() {
@@ -51,7 +58,7 @@ public class ZukanListActivity extends AppCompatActivity {
     }
     //データベースの情報をとってくる。
     public void getItemsformDB(){
-        Zukanitems = new ArrayList<ZukanAdapterItem>();//ArrayListの初期化
+        Zukanitems = new ArrayList<>();//ArrayListの初期化
         ZukanDatabase.getAllImageUrlandFishName(Zukanitems);
     }
     /*

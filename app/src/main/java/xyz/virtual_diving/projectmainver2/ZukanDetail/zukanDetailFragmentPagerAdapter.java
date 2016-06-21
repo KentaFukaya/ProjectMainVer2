@@ -22,7 +22,7 @@ public class zukanDetailFragmentPagerAdapter extends FragmentPagerAdapter {
         bundle.putInt("page", position);
 
         // Fragment をつくり Bundle をセットする
-        ZukanDetailCntentsTestFragment fragment = new ZukanDetailCntentsTestFragment();
+        ZukanDetailFragment fragment = new ZukanDetailFragment();
         fragment.setArguments(bundle);
 
         return fragment;

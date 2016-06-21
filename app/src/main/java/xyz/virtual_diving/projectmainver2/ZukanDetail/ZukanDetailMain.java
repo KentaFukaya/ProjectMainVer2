@@ -23,7 +23,7 @@ public class ZukanDetailMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zukan_detail_main);
+        setContentView(R.layout.zukandetail_main);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id",0);
 

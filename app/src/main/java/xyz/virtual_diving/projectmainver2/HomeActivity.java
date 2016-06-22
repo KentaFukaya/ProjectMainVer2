@@ -12,7 +12,6 @@ import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
 
 public class HomeActivity extends Activity {
     private ImageButton DM_btm, FG_btm;
-    //追加した。
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

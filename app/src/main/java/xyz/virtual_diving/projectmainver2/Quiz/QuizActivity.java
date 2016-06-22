@@ -11,7 +11,6 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quizactivity_main);
-        
         //画面表示
         setViews();
     }

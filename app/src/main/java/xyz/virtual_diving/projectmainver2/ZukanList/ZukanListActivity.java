@@ -9,10 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
-
 import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
 import xyz.virtual_diving.projectmainver2.R;
-
 
 
 public class ZukanListActivity extends AppCompatActivity {
@@ -62,8 +60,7 @@ public class ZukanListActivity extends AppCompatActivity {
     /*
     *Itemsのセット用のメソッド
     */
-    /*
-    public void setItems() {
+    /*public void setItems() {
 
         Zukanitems = new ArrayList<ZukanListItem>();//ArrayListの初期化
 

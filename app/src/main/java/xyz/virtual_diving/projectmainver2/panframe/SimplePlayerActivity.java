@@ -49,7 +49,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     PFNavigationMode _currentNavigationMode = PFNavigationMode.MOTION;
 
     boolean _updateThumb = true;
-    ;
+
     Timer _scrubberMonitorTimer;
 
     ViewGroup _frameContainer;
@@ -58,6 +58,9 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     Button _touchButton;
     SeekBar _scrubber;
     OrientationEventListener ol;
+
+    //20160623 kentafukaya add
+    float PushPlayButtonTime;
 
     /**
      * Creation and initalization of the Activitiy.
@@ -222,24 +225,27 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
-
             if (_pfasset == null)
                 loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
 
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
+                PushPlayButtonTime = _pfasset.getPlaybackTime();
                 _pfasset.pause();
             } else {
                 if (_pfview != null) {
                     _pfview.injectImage(null);
                 }
+                _pfasset.setPLaybackTime(PushPlayButtonTime);
                 _pfasset.play();
             }
+            Log.d("TEST", "PushPlayButton = "+PushPlayButtonTime);//現在の再生時間の取得
         }
     };
 
     /**
      * Click listener for the stop/back button
      */
+
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
             if (_pfasset == null) {

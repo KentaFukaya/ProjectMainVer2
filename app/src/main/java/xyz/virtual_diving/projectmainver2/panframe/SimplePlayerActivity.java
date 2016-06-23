@@ -131,7 +131,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
         _pfview = PFObjectFactory.view(this);
         _pfasset = PFObjectFactory.assetFromUri(this, Uri.parse(filename), this);
-
+        _pfview.getView();
         _pfview.displayAsset(_pfasset);
         _pfview.setNavigationMode(_currentNavigationMode);
        /*
@@ -239,6 +239,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 _pfasset.play();
             }
             Log.d("TEST", "PushPlayButton = "+PushPlayButtonTime);//現在の再生時間の取得
+
         }
     };
 

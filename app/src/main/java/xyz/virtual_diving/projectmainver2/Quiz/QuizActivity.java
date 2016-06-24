@@ -1,5 +1,6 @@
 package xyz.virtual_diving.projectmainver2.Quiz;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -15,14 +16,22 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
     public ArrayList<QuizDetail> quizDetails;
     //正解数
     public static int ans;
+    //QuizSQLiteOpenHelperで使う
+    private static Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quizactivity_main);
+        ctx = this;
 
         setQuizDetails();
         setViews();
+    }
+
+    //QuizSQLiteOpenHelperで使う
+    public static Context getContext() {
+        return ctx;
     }
 
     //viewpagerのセット

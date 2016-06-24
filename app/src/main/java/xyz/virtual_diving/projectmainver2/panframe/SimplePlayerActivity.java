@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
+
 import com.panframe.android.lib.PFAsset;
 import com.panframe.android.lib.PFAssetObserver;
 import com.panframe.android.lib.PFAssetStatus;
@@ -82,19 +83,23 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         setContentView(R.layout.simpleplayer_main);
 
         _frameContainer = (ViewGroup) findViewById(R.id.framecontainer);
-        _frameContainer.setBackgroundColor(0xFF000000);
+        _frameContainer.setBackgroundColor(0xFFFFFFFF);
 
+        /*各ボタンのID取得*/
         _playButton = (Button) findViewById(R.id.playbutton);
         _stopButton = (Button) findViewById(R.id.stopbutton);
         _touchButton = (Button) findViewById(R.id.touchbutton);
         _scrubber = (SeekBar) findViewById(R.id.scrubber);
 
+        /*各ボタンのクリックリスナ*/
         _playButton.setOnClickListener(playListener);
         _stopButton.setOnClickListener(stopListener);
         _touchButton.setOnClickListener(touchListener);
         _scrubber.setOnSeekBarChangeListener(this);
 
         _scrubber.setEnabled(false);
+
+        showControls(true);
 
         /*------------------------------------------------------------------------------------*/
         //20160623 kentafukaya add
@@ -104,7 +109,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         file.getParentFile().mkdir();
 
 
-        showControls(true);
     }
 
 
@@ -149,17 +153,19 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         _pfview.getView();
         _pfview.displayAsset(_pfasset);
         _pfview.setNavigationMode(_currentNavigationMode);
-       /*
+
+        /*
         _pfview.setBlindSpotImage(BitmapFactory.decodeResource(getResources(), R.raw.blackspot));
         _pfview.setBlindSpotPosition(1);
         _pfview.setBlindSpotScale(1.5f);
-        
+        */
         
         PFHotspot hp1 = _pfview.createHotspot(BitmapFactory.decodeResource(getResources(), R.raw.hotspot));
         hp1.setTag(10);
         hp1.setCoordinates(60, 40, 0);
         hp1.setClickListener(this);
-        
+
+        /*
         PFHotspot hp2 = _pfview.createHotspot(BitmapFactory.decodeResource(getResources(), R.raw.hotspot));
         hp2.setTag(20);
         hp2.setCoordinates(0, 40, 0);
@@ -192,6 +198,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
             case PLAYING:
                 Log.d("SimplePlayer", "Playing");
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                Log.d("TEST", "onStatusMessage: ");
                 _scrubber.setEnabled(true);
                 _scrubber.setMax((int) asset.getDuration());
                 _playButton.setText("pause");
@@ -210,6 +217,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 Log.d("SimplePlayer", "Paused");
                 _playButton.setText("play");
                 _pfview.injectImageFromResource(R.raw.pausescreen);
+                saveCapture(findViewById(android.R.id.content),file);//キャプチャーの取得
                 break;
             case STOPPED:
                 Log.d("SimplePlayer", "Stopped");
@@ -245,8 +253,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
                 PushPlayButtonTime = _pfasset.getPlaybackTime();
-                saveCapture(_pfview.getView(),file);//キャプチャーの取得
-                //_pfasset.pause();
+                _pfasset.pause();
             } else {
                 if (_pfview != null) {
                     _pfview.injectImage(null);
@@ -255,7 +262,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 _pfasset.play();
             }
             Log.d("TEST", "PushPlayButton = "+PushPlayButtonTime);//現在の再生時間の取得
-
         }
     };
 
@@ -266,6 +272,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
             if (_pfasset == null) {
+                saveCapture(findViewById(R.id.framecontainer),file);//キャプチャーの取得
                 finish();
                 return;
             } else {
@@ -364,7 +371,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
      */
     public void onClick(PFHotspot hotspot) {
         hotspot.animate();
-//		hotspot.setEnabled(false);
+		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
     }
 

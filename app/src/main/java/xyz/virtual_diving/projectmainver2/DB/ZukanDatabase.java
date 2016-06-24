@@ -24,6 +24,8 @@ public class ZukanDatabase {
         ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanListActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
+        if(!c.moveToPosition(id)) {
+
             // ContentValuesにデータを格納
             ContentValues values = new ContentValues();
             // カラム名に値を渡す
@@ -40,7 +42,8 @@ public class ZukanDatabase {
             } finally {
                 mDb.close();
             }
-
+        }
+        mDb.close();
         c.close();
     }
 

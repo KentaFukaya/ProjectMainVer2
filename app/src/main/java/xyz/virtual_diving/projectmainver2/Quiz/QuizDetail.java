@@ -9,17 +9,20 @@ import java.util.List;
  * Created by b1014100 on 2016/06/13.
  */
 public class QuizDetail implements Serializable {
-    private String content;
+
+    private  int id;
+    private  int fishId;
+    private String question;
     private String choices[];
     private String answer;
     private int ImageUrl;
 
-    public String getContent() {
-        return content;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public String[] getChoices() {
@@ -41,6 +44,22 @@ public class QuizDetail implements Serializable {
 
     public boolean isAnswer(String choice){
         return this.answer.equals(choice);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getFishId() {
+        return fishId;
+    }
+
+    public void setFishId(int fishId) {
+        this.fishId = fishId;
     }
 
     //選択肢をシャッフル

@@ -7,21 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import xyz.virtual_diving.projectmainver2.Quiz.QuizActivity;
+import xyz.virtual_diving.projectmainver2.Quiz.QuizDetail;
 import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetaiActivity;
 import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetail;
-import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
-import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListItem;
 
 /*
  * Created by b1014169 on 2016/06/15.
  */
 public class QuizDatabase {
     private static SQLiteDatabase mDb;
-    private static String[] FROM = {"id", "ImageUrl", "FishName", "Abstract", "Contents0", "Contents1", "Contents2"};
+    private static String[] FROM = {"id", "ImageUrl", "fishId", "question", "choice1", "choice2", "choice3"};
     private static String ORDER_BY = "id" + " ASC";//並べる順
 
     // データベースに登録する。
-    public static void setZukanData(int id, int ImageID, String FishName, String Abstract, String[] Contents) {
+    public static void setQuizData(int id, int ImageUrl, String fishId, String question, String[] choices) {
         QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
@@ -31,15 +30,15 @@ public class QuizDatabase {
             ContentValues values = new ContentValues();
             // カラム名に値を渡す
             values.put("id", id);
-            values.put("ImageUrl", ImageID);
-            values.put("FishName", FishName);
-            values.put("Abstract", Abstract);
-            values.put("Contents0", Contents[0]);
-            values.put("Contents1", Contents[1]);
-            values.put("Contents2", Contents[2]);
+            values.put("ImageUrl", ImageUrl);
+            values.put("fishId", fishId);
+            values.put("question", question);
+            values.put("Contents0", choices[0]);
+            values.put("Contents1", choices[1]);
+            values.put("Contents2", choices[2]);
             try {
                 // データの挿入
-                mDb.insert(ZukanSQLiteOpenHelper.TABLE_NAME, null, values);
+                mDb.insert(QuizSQLiteOpenHelper.TABLE_NAME, null, values);
             } finally {
                 mDb.close();
             }
@@ -48,21 +47,27 @@ public class QuizDatabase {
         c.close();
     }
 
-    // データベース上のすべてのImageURLとFishNameをZukanItemsにaddする。
-    public static void getAllImageUrlandFishName(ArrayList<ZukanListItem> Zukanitems) {
-        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanListActivity.getContext());
-        mDb = helper.getWritableDatabase();
-        Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
+    // データベース上のすべてのdataをQuizDetailsで返す。
+    public static ArrayList<QuizDetail> getQuizDetailsAll() {
+        ArrayList<QuizDetail> quizDetails = new ArrayList<QuizDetail>();
 
-            while (c.moveToNext()) {
-                ZukanListItem item = new ZukanListItem();
-                item.setId(c.getInt(0));
-                item.setIcon(c.getInt(1));
-                item.setTitle(c.getString(2));
-                Zukanitems.add(item);
-            }
-            c.close();
-            mDb.close();
+        QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
+        mDb = helper.getWritableDatabase();
+        Cursor c = mDb.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
+
+        while (c.moveToNext()) {
+            QuizDetail quizDetail = new QuizDetail();
+            quizDetail.setId(c.getInt(0));
+            quizDetail.setImageUrl(c.getInt(1));
+            quizDetail.setFishId(c.getInt(2));
+            quizDetail.setQuestion(c.getString(3));
+            quizDetail.setChoices(new String[]{c.getString(4), c.getString(5), c.getString(6)});
+            quizDetails.add(quizDetail);
+        }
+        c.close();
+        mDb.close();
+
+        return quizDetails;
     }
 
 

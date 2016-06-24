@@ -3,6 +3,14 @@
     android:id="@+id/framecontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/testimageView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/stopbutton"
+        android:layout_toEndOf="@+id/stopbutton"
+        android:layout_marginTop="94dp"/>
 
     <AbsoluteLayout
         android:id="@+id/AbsoluteLayout1"

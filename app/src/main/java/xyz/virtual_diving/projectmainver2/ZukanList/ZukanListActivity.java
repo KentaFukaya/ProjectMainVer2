@@ -23,7 +23,7 @@ public class ZukanListActivity extends AppCompatActivity {
         setContentView(R.layout.zukanlist_main);
         ctx = this;
 
-        //setItemsfromDB();
+        setItemsfromDB();
         getItemsformDB();//Itemsの内容のセット
 
         //ViewPagerのセット

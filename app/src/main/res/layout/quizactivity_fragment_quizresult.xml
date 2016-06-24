@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="195dp"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="137dp"
+                    android:text="100"
+                    android:id="@+id/quiz_resultPoint"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.27"
+                    android:textSize="100dp"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="122dp"
+                    android:text="/10"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.18"
+                    android:textSize="100dp"
+                    android:id="@+id/quiz_resultMax" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="169dp"
+                android:layout_height="64dp"
+                android:text="クイズ画面に戻る"
+                android:id="@+id/quiz_quit"
+                android:layout_gravity="bottom|center_horizontal" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="278dp"
+                android:layout_height="158dp"
+                android:text="結果発表"
+                android:id="@+id/result"
+                android:layout_gravity="center"
+                android:layout_weight="0.27"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentBottom="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignParentRight="false"
+                android:textSize="50dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+</LinearLayout>

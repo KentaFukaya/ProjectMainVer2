@@ -19,8 +19,8 @@
         <activity android:name=".MovieList.MovieListActivity"/>
         <activity android:name=".ZukanList.ZukanListActivity"/>
         <activity android:name=".ZukanDetail.ZukanDetaiActivity"/>
-        <activity android:name=".panframe.SimplePlayerActivity"/>
         <activity android:name=".Quiz.QuizActivity"/>
+        <activity android:name=".panframe.SimplePlayerActivity"/>
     </application>
 
 </manifest>

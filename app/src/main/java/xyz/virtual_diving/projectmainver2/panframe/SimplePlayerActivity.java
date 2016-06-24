@@ -11,9 +11,11 @@
 package xyz.virtual_diving.projectmainver2.panframe;
 
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +26,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
@@ -37,6 +40,9 @@ import com.panframe.android.lib.PFObjectFactory;
 import com.panframe.android.lib.PFView;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,7 +55,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     PFNavigationMode _currentNavigationMode = PFNavigationMode.MOTION;
 
     boolean _updateThumb = true;
-    ;
+
     Timer _scrubberMonitorTimer;
 
     ViewGroup _frameContainer;
@@ -58,6 +64,10 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     Button _touchButton;
     SeekBar _scrubber;
     OrientationEventListener ol;
+
+    //20160623 kentafukaya add
+    float PushPlayButtonTime;
+    File file = new File(Environment.getExternalStorageDirectory() + "/capture.png");
 
     /**
      * Creation and initalization of the Activitiy.
@@ -85,6 +95,14 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         _scrubber.setOnSeekBarChangeListener(this);
 
         _scrubber.setEnabled(false);
+
+        /*------------------------------------------------------------------------------------*/
+        //20160623 kentafukaya add
+        //参考にしたサイト: http://blog.lciel.jp/blog/2014/02/08/android-about-storage/
+
+        // 指定したファイル名が無ければ作成する。
+        file.getParentFile().mkdir();
+
 
         showControls(true);
     }
@@ -128,7 +146,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
         _pfview = PFObjectFactory.view(this);
         _pfasset = PFObjectFactory.assetFromUri(this, Uri.parse(filename), this);
-
+        _pfview.getView();
         _pfview.displayAsset(_pfasset);
         _pfview.setNavigationMode(_currentNavigationMode);
        /*
@@ -222,24 +240,29 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
-
             if (_pfasset == null)
                 loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
 
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
-                _pfasset.pause();
+                PushPlayButtonTime = _pfasset.getPlaybackTime();
+                saveCapture(_pfview.getView(),file);//キャプチャーの取得
+                //_pfasset.pause();
             } else {
                 if (_pfview != null) {
                     _pfview.injectImage(null);
                 }
+                _pfasset.setPLaybackTime(PushPlayButtonTime);
                 _pfasset.play();
             }
+            Log.d("TEST", "PushPlayButton = "+PushPlayButtonTime);//現在の再生時間の取得
+
         }
     };
 
     /**
      * Click listener for the stop/back button
      */
+
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
             if (_pfasset == null) {
@@ -343,6 +366,76 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         hotspot.animate();
 //		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
+    }
+
+
+    /*------------------------------------------------------------------------------------------------*/
+    /*20160623 KentaFukaya
+    * 画面キャプチャーを取るために、増やしました。
+    */
+
+
+    /**
+     * 撮ったキャプチャを保存
+     * @param view
+     * @param file output
+     */
+    public void saveCapture(View view, File file) {
+        // キャプチャを撮る
+        Bitmap capture = getViewCapture(view);
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file, false);
+            // 画像のフォーマットと画質と出力先を指定して保存
+            capture.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ie) {
+                    fos = null;
+                }
+            }
+        }
+    }
+
+    /**
+     * キャプチャを撮る
+     * @param view
+     * @return 撮ったキャプチャ(Bitmap)
+     */
+    public Bitmap getViewCapture(View view) {
+        view.setDrawingCacheEnabled(true);
+
+        // Viewのキャプチャを取得
+        Bitmap cache = view.getDrawingCache();
+        if(cache == null){
+            return null;
+        }
+        Bitmap screenShot = Bitmap.createBitmap(cache);
+        view.setDrawingCacheEnabled(false);
+        return screenShot;
+    }
+
+
+    /*
+    * 内部ストレージから画像ファイルを読み込み表示する
+    * //http://tech.jsa.co.jp/how_to_get_storage_path/
+    */
+
+    public void getExtraImgaeUrl(View view,int ImageViewId){
+        ImageView img = (ImageView) view.findViewById(ImageViewId);
+        String path = Environment.getExternalStorageDirectory().getPath();
+        File dir = new File(path);
+        File file = new File(dir.getAbsolutePath()+"/capture.png");
+        if (file.exists()) {
+            img.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
+        }else {
+            Log.d("TEST", "ERROR");
+        }
     }
 
 }

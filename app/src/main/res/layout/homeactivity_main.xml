@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#FFFFFF">
+        android:background="#DDF7F0">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -21,7 +21,6 @@
             android:id="@+id/FGButton"
             android:background="@drawable/homeactivity_fgicon"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
             android:layout_gravity="bottom" />
     </LinearLayout>
 
@@ -31,8 +30,8 @@
         android:id="@+id/Logo"
         android:src="@drawable/homeactivity_titlelogo"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="124dp" />
+        android:layout_marginBottom="124dp"
+        android:background="#00ffffff" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -42,9 +41,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp" />
-    <!-- backgroud="null"でボタンの背景色を透過しています。-->
-
-    <!-- 図鑑モードに切り替わるボタンですが、まだビジュアルを作成していません。ごめんなさい。
- 　  　大きさをもう少し小さくして端っこに寄せようと思うのですがいかがでしょうか -->
 
 </RelativeLayout>

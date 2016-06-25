@@ -35,7 +35,7 @@ public class QuizFragment extends Fragment {
 
         //説明文の表示
         TextView pageContents = (TextView) view.findViewById(R.id.quizContent);
-        pageContents.setText(quizDetail.getContent());
+        pageContents.setText(quizDetail.getQuestion());
 
         //問題番号表示
         TextView quizpage = (TextView) view.findViewById(R.id.quizpage);

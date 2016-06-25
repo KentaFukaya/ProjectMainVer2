@@ -217,7 +217,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 Log.d("SimplePlayer", "Paused");
                 _playButton.setText("play");
                 _pfview.injectImageFromResource(R.raw.pausescreen);
-                saveCapture(findViewById(android.R.id.content),file);//キャプチャーの取得
                 break;
             case STOPPED:
                 Log.d("SimplePlayer", "Stopped");
@@ -272,7 +271,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
             if (_pfasset == null) {
-                saveCapture(findViewById(R.id.framecontainer),file);//キャプチャーの取得
                 finish();
                 return;
             } else {
@@ -373,13 +371,14 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         hotspot.animate();
 		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
+        saveCapture(this.getWindow().getDecorView(),file);//キャプチャーの取得
     }
 
 
     /*------------------------------------------------------------------------------------------------*/
     /*20160623 KentaFukaya
     * 画面キャプチャーを取るために、増やしました。
-    */
+*/
 
 
     /**

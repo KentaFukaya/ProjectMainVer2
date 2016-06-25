@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -30,6 +31,8 @@ public class BitmapAdapter extends ArrayAdapter<Bitmap> {
         }
 
         ImageView view = (ImageView) convertView;
+        // 画像をグリッド表示するサイズを指定
+        view.setLayoutParams(new GridView.LayoutParams(340, 340));
         view.setImageBitmap(getItem(position));
 
         return view;

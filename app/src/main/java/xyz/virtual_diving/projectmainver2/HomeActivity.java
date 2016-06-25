@@ -17,7 +17,6 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homeactivity_main);
-        //aaa
 
         DM_btm = (ImageButton)findViewById(R.id.VDButton); //ダイビングアクティビティに飛ぶボタンのidを渡す
         DM_btm.setOnClickListener(new View.OnClickListener(){

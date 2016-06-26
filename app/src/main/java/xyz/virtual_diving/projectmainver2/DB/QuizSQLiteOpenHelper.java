@@ -1,7 +1,7 @@
 package xyz.virtual_diving.projectmainver2.DB;
 
 /**
- * Created by b1014169 on 2016/06/08.
+ * Created by b1014159
  */
 
 import android.content.Context;

@@ -3,9 +3,7 @@ package xyz.virtual_diving.projectmainver2.Quiz;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -39,21 +37,6 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         FragmentManager manager = getSupportFragmentManager();
         QuizViewPager viewPager = (QuizViewPager) findViewById(R.id.quiz_viewpager);
         final QuizFragmentPagerAdapter adapter = new QuizFragmentPagerAdapter(manager, quizDetails);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            String TAG = "tag";
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d(TAG, "onPageScrolled: ");
-            }
-            @Override
-            public void onPageSelected(int position) {
-                Log.d("", "onPageSelected: " + "セレクト");
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                Log.d(TAG, "onPageScrollStateChanged: ");
-            }
-        });
 
         viewPager.setAdapter(adapter);
     }

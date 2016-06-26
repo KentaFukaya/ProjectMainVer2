@@ -8,11 +8,9 @@ import java.util.ArrayList;
 
 import xyz.virtual_diving.projectmainver2.Quiz.QuizActivity;
 import xyz.virtual_diving.projectmainver2.Quiz.QuizDetail;
-import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetaiActivity;
-import xyz.virtual_diving.projectmainver2.ZukanDetail.ZukanDetail;
 
 /*
- * Created by b1014169 on 2016/06/15.
+ * Created by b1014159
  */
 public class QuizDatabase {
     private static SQLiteDatabase mDb;
@@ -33,9 +31,9 @@ public class QuizDatabase {
             values.put("ImageUrl", ImageUrl);
             values.put("fishId", fishId);
             values.put("question", question);
-            values.put("Contents0", choices[0]);
-            values.put("Contents1", choices[1]);
-            values.put("Contents2", choices[2]);
+            values.put("choice1", choices[0]);
+            values.put("choice2", choices[1]);
+            values.put("choice3", choices[2]);
             try {
                 // データの挿入
                 mDb.insert(QuizSQLiteOpenHelper.TABLE_NAME, null, values);
@@ -72,26 +70,26 @@ public class QuizDatabase {
 
 
     // id に対応するすべてのデータを返す
-    public static void getAllDatabyId(ZukanDetail item, int id) {
-        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanDetaiActivity.getContext());
-        mDb = helper.getWritableDatabase();
-
-        String[] contents = new String[3];
-        Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
-            if (c.moveToPosition(id)) {
-                item.setId(c.getInt(0));
-                item.setImageUrl(c.getInt(1));
-                item.setFishName(c.getString(2));
-                item.setAbstract(c.getString(3));
-                contents[0] = c.getString(4);
-                contents[1] = c.getString(5);
-                contents[2] = c.getString(6);
-                item.setContents(contents);
-
-            }
-            c.close();
-            mDb.close();
-
-    }
+//    public static void getAllDatabyId(ZukanDetail item, int id) {
+//        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanDetaiActivity.getContext());
+//        mDb = helper.getWritableDatabase();
+//
+//        String[] contents = new String[3];
+//        Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
+//            if (c.moveToPosition(id)) {
+//                item.setId(c.getInt(0));
+//                item.setImageUrl(c.getInt(1));
+//                item.setFishName(c.getString(2));
+//                item.setAbstract(c.getString(3));
+//                contents[0] = c.getString(4);
+//                contents[1] = c.getString(5);
+//                contents[2] = c.getString(6);
+//                item.setContents(contents);
+//
+//            }
+//            c.close();
+//            mDb.close();
+//
+//    }
 
 }

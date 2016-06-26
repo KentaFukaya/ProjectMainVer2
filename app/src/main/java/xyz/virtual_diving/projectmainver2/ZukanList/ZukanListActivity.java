@@ -16,7 +16,9 @@ import xyz.virtual_diving.projectmainver2.R;
 public class ZukanListActivity extends AppCompatActivity {
     public static ArrayList<ZukanListItem> Zukanitems = new ArrayList<>();
     private static Context ctx;
-
+    private String ZukanFishName[];
+    private String ZukanAbstract[];
+    private String ZukanContents[] [];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,38 @@ public class ZukanListActivity extends AppCompatActivity {
         return ctx;
     }
 
+    //データベースに追加するための配列のデータを入れる
+    public  void setZuknaContents(){
+
+        //page0
+        ZukanFishName[0] = "マアジ";
+        ZukanAbstract[0] = "スズキ目アジ科";
+        ZukanContents[0] [0] = "北西太平洋の沿岸部に分布する海水魚。大きさは大体50cm。";
+        ZukanContents[0] [1] = "日本では良く食卓に並ぶ。さて、味はいかほどか・・・\nどの季節でも獲れるが、旬は夏。";
+        ZukanContents[0] [2] = "代表的な調理方法は\n 唐揚げ、フライ、ムニエル、刺身など。\n 日本各地にアジを使った郷土料理があるよ。";
+
+        //page1
+        ZukanFishName[1] = "ヤリイカ";
+        ZukanAbstract[1] = "閉眼目ヤリイカ科\n";
+        ZukanContents[1] [0] = "北海道から九州まで日本列島沿海に分布。\n大きさは大体20〜40cmくらい。";
+        ZukanContents[1] [1] = "函館での旬は3月〜5月。 名前の由来は姿形が槍の穂に似ているから。 \n他にも「ササイカ」「シャクハチイカ」など呼び名がある。";
+        ZukanContents[1] [2] = "代表的な調理方法は\n刺身、寿司、直火焼き、塩辛など。\n函館なら朝市でよく見れるかも。";
+
+        //page2
+        ZukanFishName[2] = "クロマグロ";
+        ZukanAbstract[2] = "スズキ目サバ科\n";
+        ZukanContents[2] [0] = "日本海側や来た太平洋側に分布。\n大きさは全長3m、体重400kgを超えるものも。";
+        ZukanContents[2] [1] = "どの季節でも旬のものが食べられるが、\n基本的には春から夏。\n地方によって「ホンマグロ」、「クロシビ」など呼び名がある。";
+        ZukanContents[2] [2] = "代表的な調理方法は\n刺身、寿司、ステーキ、缶詰など幅広い。\n日本ではかなり昔から食べられている。";
+
+        //page2
+        ZukanFishName[2] = "マダイ";
+        ZukanAbstract[2] = "スズキ目タイ科\n";
+        ZukanContents[2] [0] = "日本列島全域に分布。\n大きさは120cmと比較的大きい。";
+        ZukanContents[2] [1] = "旬は1〜3月ごろ。\n頑丈な顎と歯でエビやカニなど固い殻でも噛み砕いて食べる。";
+        ZukanContents[2] [2] = "代表的な調理方法は\n刺身、焼き魚、吸い物、煮付けなど多種多様。\n日本では昔から目出度い魚だとされている。";
+
+    }
     //データベースに追加する
     public void setItemsfromDB(){
         String contents[] = new String[3];

@@ -1,10 +1,19 @@
 package xyz.virtual_diving.projectmainver2.MovieList;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,17 +25,26 @@ import xyz.virtual_diving.projectmainver2.MovieList.compareato.IdComparator;
 import xyz.virtual_diving.projectmainver2.MovieList.compareato.ViewCountComparator;
 import xyz.virtual_diving.projectmainver2.R;
 
-public class MovieListActivity extends AppCompatActivity {
+public class MovieListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ViewPager viewPager;
     public static List<ListItem> Movielist = new ArrayList<ListItem>();
     public static List<ListItem> list0 = new ArrayList<ListItem>();
     public static List<ListItem> list1 = new ArrayList<ListItem>();
     private static Context ctx;
 
+    private AlertDialog mActions;
+    public String[] AlertContents = new String[2];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movielist_main);
+        //help画面の作成
+        makeAlertDialog();
+        //navgaitonbarの作成
+        makeNavigationBar();
+
+
         ctx = this;
         //listの初期化
         Movielist = new ArrayList<ListItem>();
@@ -81,4 +99,86 @@ public class MovieListActivity extends AppCompatActivity {
             list1.add(item);
         }
     }*/
+
+    /*----------------------------navigationbar関連-----------------------------*/
+
+    //navigation bar の作成
+    private void makeNavigationBar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //タイトルの表示
+        getSupportActionBar().setTitle("");
+
+        //←のメニューの表示
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.syncState();
+
+        //左のメニュの内部の判定
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        if (id == R.id.nav_gallery) {
+            // Handle the camera action
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_share) {
+
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    //Alertdialogの作成(Helpの画面)
+    public void makeAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Light_Dialog));
+        setAlertContents();
+        builder.setTitle(AlertContents[0]).setMessage(AlertContents[1]).setPositiveButton("OK", null);
+        mActions=builder.create();
+    }
+    //AlertDiaogの内容を詰める
+    private void setAlertContents() {
+        AlertContents[0] = "title" ;
+        AlertContents[1] = "Contents:helpの内容を書きたい";
+    }
+
+    /*helpbottonの表示
+    *http://techbooster.jpn.org/andriod/ui/3383/
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // メニューの要素を追加して取得
+        MenuItem actionItem = menu.add("Help Button");
+        // SHOW_AS_ACTION_IF_ROOM:余裕があれば表示
+        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        // アイコンを設定
+        actionItem.setIcon(R.drawable.appbar_ic_action_help);
+        return true;
+    }
+
+    /*
+    *helpBouttonのクリック判定
+    */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        mActions.show();
+        return true;
+    }
+
 }

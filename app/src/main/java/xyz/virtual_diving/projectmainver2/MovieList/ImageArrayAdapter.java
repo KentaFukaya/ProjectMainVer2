@@ -35,7 +35,7 @@ public class ImageArrayAdapter extends ArrayAdapter<ListItem> {
         if(convertView  != null) {
             view = convertView;
         }else{
-            view = this.inflater.inflate(this.resouceId, null);
+            view = this.inflater.inflate(R.layout.movielist_listitem, null);
         }
 
         ListItem item = this.items.get(position);

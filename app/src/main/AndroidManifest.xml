@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MovieList.MovieListActivity"/>
+        <activity android:name=".MovieList.MovieListActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".ZukanList.ZukanListActivity"
                   android:theme="@style/AppTheme.NoActionBar"
             />

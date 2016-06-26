@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +16,7 @@ import xyz.virtual_diving.projectmainver2.MovieList.compareato.IdComparator;
 import xyz.virtual_diving.projectmainver2.MovieList.compareato.ViewCountComparator;
 import xyz.virtual_diving.projectmainver2.R;
 
-public class MovieListActivity extends FragmentActivity {
+public class MovieListActivity extends AppCompatActivity {
     ViewPager viewPager;
     public static List<ListItem> Movielist = new ArrayList<ListItem>();
     public static List<ListItem> list0 = new ArrayList<ListItem>();

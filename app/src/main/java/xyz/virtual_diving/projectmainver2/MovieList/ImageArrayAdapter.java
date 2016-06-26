@@ -48,7 +48,9 @@ public class ImageArrayAdapter extends ArrayAdapter<ListItem> {
         appContentsText.setText(item.getContentsText());
         //画像をセット
         ImageView appInfoImage = (ImageView) view.findViewById(R.id.MovieList_itemimage);
-        appInfoImage.setImageResource(R.drawable.zukanlist_sakana0+item.getImageId());
+        //appInfoImage.setImageResource(R.drawable.zukanlist_sakana0+item.getImageId());
+        appInfoImage.setImageResource(R.drawable.zukanlist_sakana0);
+
         //再生数のセット
         TextView appViewCountText = (TextView) view.findViewById(R.id.MovieList_viewconut);
         appViewCountText.setText("再生数:"+item.getViewCount());

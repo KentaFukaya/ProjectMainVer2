@@ -15,7 +15,7 @@ class ZukanSQLiteOpenHelper extends SQLiteOpenHelper {
 
     static final String DB_NAME = "Zukan.db";
     static final String TABLE_NAME = "zukanDetail";
-    static final int DB_VERSION = 2gi;
+    static final int DB_VERSION = 2;
 
     static final String CREATE_TABLE = "create table " + TABLE_NAME + "( " +
             "id integer primary key , " +

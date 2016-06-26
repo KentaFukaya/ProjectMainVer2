@@ -1,73 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <include
+        layout="@layout/zukandetail_appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-        <ImageButton
-            android:src="@drawable/zukandetail_action_back"
-            android:background="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/ZukanDetail_back"
-            android:layout_gravity="left" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            />
-        <ImageButton
-            android:src="@drawable/zukandetail_quiz"
-            android:background="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/ZukanDetail_quiz"
-            android:layout_gravity="right"
-             />
-    </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1">
-            <ImageView
-                android:layout_marginLeft="50dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/ZukanDetail_pic" />
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="30dp"
-                        android:layout_marginLeft="50dp"
-                        android:id="@+id/ZukanDetail_fishName"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="New Text"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="50dp"
-                        android:id="@+id/ZukanDetail_abstarct" />
-            </LinearLayout>
-        </LinearLayout>
-    <View
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
-    <android.support.v4.view.ViewPager
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:id="@+id/ZukanDetail_ViewPager"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginTop="90dp"
+        android:background="#FFFFFF"
+        app:menu="@menu/activity_main_drawer"
+        android:visibility="invisible"/>
+
+</android.support.v4.widget.DrawerLayout>

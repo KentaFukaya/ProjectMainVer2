@@ -22,7 +22,9 @@
         <activity android:name=".ZukanList.ZukanListActivity"
                   android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".ZukanDetail.ZukanDetaiActivity"/>
+        <activity android:name=".ZukanDetail.ZukanDetaiActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".Quiz.QuizActivity"/>
         <activity android:name=".panframe.SimplePlayerActivity"/>
         <activity android:name=".Image.ImageActivity"/>

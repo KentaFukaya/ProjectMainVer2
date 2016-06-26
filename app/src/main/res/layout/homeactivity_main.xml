@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/Button"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
             app:bootstrapBrand="primary"
             app:bootstrapSize="xl"
             bootstrap:typicon="ty_camera"

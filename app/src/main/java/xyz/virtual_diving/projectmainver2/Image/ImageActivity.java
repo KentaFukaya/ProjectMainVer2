@@ -20,7 +20,7 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
+        setContentView(R.layout.image_activity);
 
         // ループ回数10(要検討)
         for (int id = 0; id <= 10; id++) {
@@ -52,7 +52,7 @@ public class ImageActivity extends AppCompatActivity {
                     super.onPostExecute(image);
 
                     // gridView に list を追加
-                    BitmapAdapter adapter = new BitmapAdapter(getApplicationContext(), R.layout.grid_items, list);
+                    BitmapAdapter adapter = new BitmapAdapter(getApplicationContext(), R.layout.image_items, list);
                     GridView gridView = (GridView) findViewById(R.id.gridView);
                     gridView.setAdapter(adapter);
                 }

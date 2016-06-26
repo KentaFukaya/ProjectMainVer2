@@ -2,29 +2,49 @@ package xyz.virtual_diving.projectmainver2.ZukanList;
 
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
+import xyz.virtual_diving.projectmainver2.Image.ImageActivity;
+import xyz.virtual_diving.projectmainver2.MovieList.MovieListActivity;
 import xyz.virtual_diving.projectmainver2.R;
 
 
-public class ZukanListActivity extends AppCompatActivity {
+public class ZukanListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static ArrayList<ZukanListItem> Zukanitems = new ArrayList<>();
     private static Context ctx;
     private String ZukanFishName[] = new String [4];
     private String ZukanAbstract[] = new String [4];
     private String ZukanContents[] [] = new String[4][3];
+    /*-----------------------------------*/
+    private AlertDialog mActions;
+    public String[] AlertContents = new String[2];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zukanlist_main);
         ctx = this;
+
+        //help画面の作成
+        makeAlertDialog();
+        //navgaitonbarの作成
+        makeNavigationBar();
 
         setItemsfromDB();
         getItemsformDB();//Itemsの内容のセット
@@ -112,4 +132,89 @@ public class ZukanListActivity extends AppCompatActivity {
             Zukanitems.add(Zukanitem);
         }//構成OK
     }*/
+
+    /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^navigationbarkannren ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+    //navigation bar の作成
+    private void makeNavigationBar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //タイトルの表示
+        getSupportActionBar().setTitle("");
+
+        //←のメニューの表示
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.syncState();
+
+        //左のメニュの内部の判定
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_gallery);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+
+        int id = item.getItemId();
+        if (id == R.id.nav_gallery) {
+            // Handle the camera action
+
+        } else if (id == R.id.nav_slideshow) {
+            Intent intent = new Intent(this, MovieListActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(this, ImageActivity.class);
+            startActivity(intent);
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    //Alertdialogの作成(Helpの画面)
+    public void makeAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Light_Dialog));
+        setAlertContents();
+        builder.setTitle(AlertContents[0]).setMessage(AlertContents[1]).setPositiveButton("OK", null);
+        mActions=builder.create();
+    }
+    //AlertDiaogの内容を詰める
+    private void setAlertContents() {
+        AlertContents[0] = "title" ;
+        AlertContents[1] = "Contents:helpの内容を書きたい";
+    }
+
+    /*helpbottonの表示
+    *http://techbooster.jpn.org/andriod/ui/3383/
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // メニューの要素を追加して取得
+        MenuItem actionItem = menu.add("Help Button");
+        // SHOW_AS_ACTION_IF_ROOM:余裕があれば表示
+        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        // アイコンを設定
+        actionItem.setIcon(R.drawable.appbar_ic_action_help);
+        return true;
+    }
+
+    /*
+    *helpBouttonのクリック判定
+    */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        mActions.show();
+        return true;
+    }
 }

@@ -2,6 +2,7 @@ package xyz.virtual_diving.projectmainver2.MovieList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -21,9 +22,11 @@ import java.util.List;
 import java.util.Random;
 
 import xyz.virtual_diving.projectmainver2.DB.VideoListDatabase;
+import xyz.virtual_diving.projectmainver2.Image.ImageActivity;
 import xyz.virtual_diving.projectmainver2.MovieList.compareato.IdComparator;
 import xyz.virtual_diving.projectmainver2.MovieList.compareato.ViewCountComparator;
 import xyz.virtual_diving.projectmainver2.R;
+import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
 
 public class MovieListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ViewPager viewPager;
@@ -117,6 +120,7 @@ public class MovieListActivity extends AppCompatActivity implements NavigationVi
 
         //左のメニュの内部の判定
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_slideshow);
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override
@@ -134,11 +138,14 @@ public class MovieListActivity extends AppCompatActivity implements NavigationVi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(this, ZukanListActivity.class);
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(this, ImageActivity.class);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

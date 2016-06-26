@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
+import xyz.virtual_diving.projectmainver2.Image.ImageActivity;
+import xyz.virtual_diving.projectmainver2.MovieList.MovieListActivity;
 import xyz.virtual_diving.projectmainver2.Quiz.QuizActivity;
 import xyz.virtual_diving.projectmainver2.R;
 
@@ -146,10 +148,13 @@ public class ZukanDetaiActivity extends AppCompatActivity implements NavigationV
         int id = item.getItemId();
         if (id == R.id.nav_gallery) {
             // Handle the camera action
+
         } else if (id == R.id.nav_slideshow) {
-
+            Intent intent = new Intent(this, MovieListActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(this, ImageActivity.class);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

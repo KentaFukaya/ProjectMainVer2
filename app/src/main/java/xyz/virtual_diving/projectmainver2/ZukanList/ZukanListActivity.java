@@ -4,6 +4,7 @@ package xyz.virtual_diving.projectmainver2.ZukanList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,8 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import xyz.virtual_diving.projectmainver2.DB.ZukanDatabase;
+import xyz.virtual_diving.projectmainver2.Image.ImageActivity;
+import xyz.virtual_diving.projectmainver2.MovieList.MovieListActivity;
 import xyz.virtual_diving.projectmainver2.R;
 
 
@@ -166,10 +169,13 @@ public class ZukanListActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
         if (id == R.id.nav_gallery) {
             // Handle the camera action
+
         } else if (id == R.id.nav_slideshow) {
-
+            Intent intent = new Intent(this, MovieListActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(this, ImageActivity.class);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

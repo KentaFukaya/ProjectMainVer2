@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import xyz.virtual_diving.projectmainver2.R;
 
 public class ImageActivity extends AppCompatActivity {
-    private final ArrayList<Bitmap> list = new ArrayList<>();
+    public static int page = 0;
+    private static ArrayList<Bitmap> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.image_activity);
+        setContentView(R.layout.image_main);
 
         // ループ回数10(要検討)
         for (int id = 0; id <= 10; id++) {
@@ -52,11 +53,16 @@ public class ImageActivity extends AppCompatActivity {
                     super.onPostExecute(image);
 
                     // gridView に list を追加
-                    BitmapAdapter adapter = new BitmapAdapter(getApplicationContext(), R.layout.image_items, list);
+                    BitmapAdapter adapter = new BitmapAdapter(getApplicationContext(), R.layout.image_griditem, list);
                     GridView gridView = (GridView) findViewById(R.id.gridView);
                     gridView.setAdapter(adapter);
                 }
             }.execute("https://mb.api.cloud.nifty.com/2013-09-01/applications/xenlIaKJArb0UrG/publicFiles/picture" + id + ".jpg");
         }
+    }
+
+    // ArrayList<Bitmap> をインテントで渡せなかったため作成
+    protected static ArrayList<Bitmap> getList(){
+        return list;
     }
 }

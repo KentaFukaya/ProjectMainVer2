@@ -24,6 +24,7 @@
         <activity android:name=".Quiz.QuizActivity" />
         <activity android:name=".panframe.SimplePlayerActivity" />
         <activity android:name=".Image.ImageActivity" />
+        <activity android:name=".Image.ImageSubActivity" />
     </application>
 
 </manifest>

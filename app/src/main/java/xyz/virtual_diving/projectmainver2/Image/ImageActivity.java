@@ -1,11 +1,14 @@
 package xyz.virtual_diving.projectmainver2.Image;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.io.InputStream;
@@ -17,11 +20,15 @@ import xyz.virtual_diving.projectmainver2.R;
 public class ImageActivity extends AppCompatActivity {
     public static int page = 0;
     private static ArrayList<Bitmap> list = new ArrayList<>();
+    private static ArrayList<String> comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_main);
+
+        // mBaaS からコメントを取得
+        comment = CommentGenerator.createCommentData(getApplication());
 
         // ループ回数10(要検討)
         for (int id = 0; id <= 10; id++) {
@@ -59,6 +66,19 @@ public class ImageActivity extends AppCompatActivity {
                 }
             }.execute("https://mb.api.cloud.nifty.com/2013-09-01/applications/xenlIaKJArb0UrG/publicFiles/picture" + id + ".jpg");
         }
+
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //画像が選ばれたときの処理
+                Intent intent = new Intent(getApplication(), ImageSubActivity.class);
+                intent.putExtra("PageNumber", position);
+                intent.putStringArrayListExtra("Comment", comment);
+                startActivity(intent);
+            }
+        });
     }
 
     // ArrayList<Bitmap> をインテントで渡せなかったため作成

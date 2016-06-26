@@ -26,7 +26,7 @@ public class ImageSubActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_sub);
 
-        this.comment = CommentGenerator.createCommentData(getApplication());
+        //this.comment = CommentGenerator.createCommentData(getApplication());
         Intent intent = getIntent();
         int pageNumber = intent.getIntExtra("PageNumber", 0);
         ArrayList<Bitmap> list = new ArrayList<>(ImageActivity.getList());

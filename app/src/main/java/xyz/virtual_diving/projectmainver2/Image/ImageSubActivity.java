@@ -28,6 +28,7 @@ public class ImageSubActivity extends Activity {
 
         this.comment = CommentGenerator.createCommentData(getApplication());
         Intent intent = getIntent();
+        //gridviewページのページ番号を取得
         int pageNumber = intent.getIntExtra("PageNumber", 0);
         ArrayList<Bitmap> list = new ArrayList<>(ImageActivity.getList());
 
@@ -35,6 +36,7 @@ public class ImageSubActivity extends Activity {
         PagerAdapter pagerAdapter = new Adapter(this, comment, list);
         viewPager.setOnPageChangeListener(new PageChangeListener());
         viewPager.setAdapter(pagerAdapter);
+        //最初に表示するページの設定
         viewPager.setCurrentItem(pageNumber);
 
         View.OnClickListener returnButtonListener

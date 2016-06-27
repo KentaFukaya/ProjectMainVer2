@@ -67,7 +67,8 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
     //20160623 kentafukaya add
     float PushPlayButtonTime;
-    File file = new File(Environment.getExternalStorageDirectory() + "/capture.png");
+    File file0 = new File(Environment.getExternalStorageDirectory() + "/capture0.png");
+    Button _testButton;
 
     /**
      * Creation and initalization of the Activitiy.
@@ -95,16 +96,19 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         _scrubber.setOnSeekBarChangeListener(this);
 
         _scrubber.setEnabled(false);
+        showControls(true);
+
 
         /*------------------------------------------------------------------------------------*/
         //20160623 kentafukaya add
         //参考にしたサイト: http://blog.lciel.jp/blog/2014/02/08/android-about-storage/
 
         // 指定したファイル名が無ければ作成する。
-        file.getParentFile().mkdir();
+        file0.getParentFile().mkdir();
+        _testButton = (Button) findViewById(R.id.testbutton);
+        _testButton.setOnClickListener(testButton);
 
 
-        showControls(true);
     }
 
 
@@ -234,19 +238,21 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 break;
         }
     }
-
+private OnClickListener testButton = new OnClickListener() {
+        public void onClick(View v) {
+            saveCapture(_pfview.getView(),file0);//キャプチャーの取得
+        }
+    };
     /**
      * Click listener for the play/pause button
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
-            if (_pfasset == null)
-                loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
-
+            if (_pfasset == null) loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
+            Log.d("TEST", "_frameContainer.getChildCount() "+_frameContainer.getChildCount());
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
                 PushPlayButtonTime = _pfasset.getPlaybackTime();
-                saveCapture(_pfview.getView(),file);//キャプチャーの取得
-                //_pfasset.pause();
+                _pfasset.pause();
             } else {
                 if (_pfview != null) {
                     _pfview.injectImage(null);
@@ -265,10 +271,12 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
+
             if (_pfasset == null) {
                 finish();
                 return;
             } else {
+
                 _pfasset.stop();
 
                 // cleanup
@@ -387,7 +395,8 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         try {
             fos = new FileOutputStream(file, false);
             // 画像のフォーマットと画質と出力先を指定して保存
-            capture.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            capture.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            Log.d("TEST", "saveCapture: OK");
             fos.flush();
         } catch (Exception e) {
             e.printStackTrace();
@@ -417,6 +426,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         }
         Bitmap screenShot = Bitmap.createBitmap(cache);
         view.setDrawingCacheEnabled(false);
+        Log.d("TEST", "screenShot: OK");
         return screenShot;
     }
 

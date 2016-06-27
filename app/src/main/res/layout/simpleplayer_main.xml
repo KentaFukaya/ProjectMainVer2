@@ -69,6 +69,15 @@
             android:paddingRight="22dp"
             android:paddingTop="6dp" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:id="@+id/testbutton"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/stopbutton"
+            android:layout_toEndOf="@+id/stopbutton"
+            android:layout_marginTop="51dp" />
 
 
     </RelativeLayout>

@@ -36,6 +36,7 @@ public class ImageSubActivity extends Activity {
         PagerAdapter pagerAdapter = new Adapter(this, comment, list);
         viewPager.setOnPageChangeListener(new PageChangeListener());
         viewPager.setAdapter(pagerAdapter);
+        //最初に表示するページの設定
         viewPager.setCurrentItem(pageNumber);
 
         View.OnClickListener returnButtonListener

@@ -3,19 +3,18 @@ package xyz.virtual_diving.projectmainver2.Quiz;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.util.ArrayList;
 
+import xyz.virtual_diving.projectmainver2.DB.QuizDatabase;
 import xyz.virtual_diving.projectmainver2.R;
 
 public class QuizActivity extends AppCompatActivity implements QuizResultFragment.QuizActivityFragmentListener{
 
     public ArrayList<QuizDetail> quizDetails;
     //正解数
-    public static int ans;
+    private static int ans;
     //QuizSQLiteOpenHelperで使う
     private static Context ctx;
 
@@ -39,60 +38,41 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         FragmentManager manager = getSupportFragmentManager();
         QuizViewPager viewPager = (QuizViewPager) findViewById(R.id.quiz_viewpager);
         final QuizFragmentPagerAdapter adapter = new QuizFragmentPagerAdapter(manager, quizDetails);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            String TAG = "tag";
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d(TAG, "onPageScrolled: ");
-            }
-            @Override
-            public void onPageSelected(int position) {
-                Log.d("", "onPageSelected: " + "セレクト");
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                Log.d(TAG, "onPageScrollStateChanged: ");
-            }
-        });
 
         viewPager.setAdapter(adapter);
     }
 
     //QuizDetailに内容をセットする
     private void setQuizDetails() {
-        quizDetails = new ArrayList<QuizDetail>();
         ans = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             QuizDetail quizDetail = new QuizDetail();
-            quizDetail.setChoices(new String[]{"1", "2", "3"});
-            quizDetail.setQuestion("魚を探せ");
+            quizDetail.setId(i);
             quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
-            quizDetail.shuffleChoices();
-            quizDetails.add(quizDetail);
+            quizDetail.setFishId(0);
+            quizDetail.setQuestion("魚を探せ");
+            quizDetail.setChoices(new String[]{"1", "2", "3"});
+            //データベースに入れます
+            QuizDatabase.setQuizData(quizDetail);
         }
+        //データベースから取得
+        quizDetails = QuizDatabase.getQuizDetailsAll();
     }
 
-    public int getAns() {
+    public static int getAns() {
         return ans;
     }
 
-    public void setAns(int ans) {
-        this.ans = ans;
+    private static void setAns(int setAns) {
+        ans = setAns;
     }
 
-    public  void pulsAns(){
-        this.ans++;
-    }
-
-    public void quit(){
-//        Intent intent = new Intent(getApplication(), MainActivity.class);
-//        startActivity(intent);
+    public static void plusAns(){
+        setAns(getAns() + 1);
     }
 
     @Override
     public void onQuizFragmentEvent1() {
         finish();
-//        Intent intent = new Intent(getApplication(), MainActivity.class);
-//        startActivity(intent);
     }
 }

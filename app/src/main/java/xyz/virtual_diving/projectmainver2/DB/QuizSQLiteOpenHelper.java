@@ -1,7 +1,7 @@
 package xyz.virtual_diving.projectmainver2.DB;
 
 /**
- * Created by b1014169 on 2016/06/08.
+ * Created by b1014159
  */
 
 import android.content.Context;
@@ -20,7 +20,7 @@ class QuizSQLiteOpenHelper extends SQLiteOpenHelper {
     static final String CREATE_TABLE = "create table " + TABLE_NAME + "( " +
             "id integer primary key , " +
             "ImageUrl integer not null, " +
-            "fishId text not null, " +
+            "fishId integer not null, " +
             "question text not null, " +
             "choice1 text not null,"   +
             "choice2 text not null,"   +

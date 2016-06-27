@@ -40,7 +40,7 @@ public class QuizResultFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.quizactivity_fragment_quizresult, container, false);
 
-        ans = QuizActivity.ans;
+        ans = QuizActivity.getAns();
         Bundle args = getArguments();
         position = args.getInt("page");
 

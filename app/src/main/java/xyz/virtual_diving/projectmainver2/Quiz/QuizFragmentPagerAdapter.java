@@ -8,9 +8,6 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-/**
- * Created by b1014100 on 2016/06/13.
- */
 public class QuizFragmentPagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<QuizDetail> quizDetails;
 
@@ -21,7 +18,7 @@ public class QuizFragmentPagerAdapter extends FragmentStatePagerAdapter {
     }
     @Override
     public Fragment getItem(int position) {
-        Log.d("", "getItem: "+position +"ans"+QuizActivity.ans);
+        Log.d("", "getItem: "+position +"ans"+QuizActivity.getAns());
         //クイズ画面
         if(position < quizDetails.size()) {
             // Bundleに位置情報,説明をセット

@@ -23,7 +23,7 @@ public class QuizPreResultFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.quizactivity_fragment_quizresult, container, false);
 
-        ans = QuizActivity.ans;
+        ans = QuizActivity.getAns();
 
         //結果発表ボタン以外消す
         view.findViewById(R.id.quiz_resultPoint).setVisibility(View.GONE);

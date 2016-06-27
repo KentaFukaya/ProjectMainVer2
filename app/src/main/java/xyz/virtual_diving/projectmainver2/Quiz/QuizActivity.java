@@ -14,7 +14,7 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
 
     public ArrayList<QuizDetail> quizDetails;
     //正解数
-    public static int ans;
+    private static int ans;
     //QuizSQLiteOpenHelperで使う
     private static Context ctx;
 
@@ -59,27 +59,20 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         quizDetails = QuizDatabase.getQuizDetailsAll();
     }
 
-    public int getAns() {
+    public static int getAns() {
         return ans;
     }
 
-    public void setAns(int ans) {
-        this.ans = ans;
+    private static void setAns(int setAns) {
+        ans = setAns;
     }
 
-    public void pulsAns(){
-        this.ans++;
-    }
-
-    public void quit(){
-//        Intent intent = new Intent(getApplication(), MainActivity.class);
-//        startActivity(intent);
+    public static void plusAns(){
+        setAns(getAns() + 1);
     }
 
     @Override
     public void onQuizFragmentEvent1() {
         finish();
-//        Intent intent = new Intent(getApplication(), MainActivity.class);
-//        startActivity(intent);
     }
 }

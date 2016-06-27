@@ -58,7 +58,7 @@ public class QuizFragment extends Fragment {
         choice3.setOnClickListener(choiceButtonClickListener);
 
         //アニメーションセット
-        setAnime(view);
+        setAnime();
 
         //正解　画像セット
         maru_img = (ImageView) view.findViewById(R.id.maruimg);
@@ -79,7 +79,7 @@ public class QuizFragment extends Fragment {
         viewPager.setCurrentItem(viewPager.getCurrentItem() + i);
     }
 
-    private void setAnime(View view) {
+    private void setAnime() {
         //正解アニメーション
         maruAnime = new AlphaAnimation(0, 1);
         maruAnime.setDuration(1000);
@@ -127,7 +127,7 @@ public class QuizFragment extends Fragment {
             // 押されたボタンのテキストと正解を比較
             if (quizDetail.isAnswer(String.valueOf(((Button) v).getText()))) {
                 // 正解の処理
-                QuizActivity.ans++;
+                QuizActivity.plusAns();
                 maru_img.setVisibility(View.VISIBLE);
                 maru_img.startAnimation(maruAnime);
             } else {

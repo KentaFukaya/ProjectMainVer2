@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".MovieList.MovieListActivity"
                   android:theme="@style/AppTheme.NoActionBar"
             />
@@ -31,15 +30,7 @@
         <activity android:name=".Quiz.QuizActivity"/>
         <activity android:name=".panframe.SimplePlayerActivity"/>
         <activity android:name=".Image.ImageActivity"/>
-=======
-        <activity android:name=".MovieList.MovieListActivity" />
-        <activity android:name=".ZukanList.ZukanListActivity" />
-        <activity android:name=".ZukanDetail.ZukanDetaiActivity" />
-        <activity android:name=".Quiz.QuizActivity" />
-        <activity android:name=".panframe.SimplePlayerActivity" />
-        <activity android:name=".Image.ImageActivity" />
         <activity android:name=".Image.ImageSubActivity" />
->>>>>>> 893b665fcee39fb976b4c920bfb8e6b802b5d720
     </application>
 
 </manifest>

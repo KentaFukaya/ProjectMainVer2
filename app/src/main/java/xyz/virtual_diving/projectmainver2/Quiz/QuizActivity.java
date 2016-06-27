@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import xyz.virtual_diving.projectmainver2.DB.QuizDatabase;
 import xyz.virtual_diving.projectmainver2.R;
 
 public class QuizActivity extends AppCompatActivity implements QuizResultFragment.QuizActivityFragmentListener{
@@ -45,14 +46,17 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
     private void setQuizDetails() {
         quizDetails = new ArrayList<QuizDetail>();
         ans = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             QuizDetail quizDetail = new QuizDetail();
             quizDetail.setChoices(new String[]{"1", "2", "3"});
             quizDetail.setQuestion("魚を探せ");
             quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
-            quizDetail.shuffleChoices();
-            quizDetails.add(quizDetail);
+//            quizDetails.add(quizDetail);
+            //データベースに入れます
+            QuizDatabase.setQuizData(i, quizDetail.getImageUrl(), quizDetail.getFishId(), quizDetail.getQuestion(), quizDetail.getChoices());
         }
+        //データベースから取得
+        quizDetails = QuizDatabase.getQuizDetailsAll();
     }
 
     public int getAns() {
@@ -63,7 +67,7 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         this.ans = ans;
     }
 
-    public  void pulsAns(){
+    public void pulsAns(){
         this.ans++;
     }
 

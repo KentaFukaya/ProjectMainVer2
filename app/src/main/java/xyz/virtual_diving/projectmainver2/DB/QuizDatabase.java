@@ -3,6 +3,7 @@ package xyz.virtual_diving.projectmainver2.DB;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class QuizDatabase {
     private static String ORDER_BY = "id" + " ASC";//並べる順
 
     // データベースに登録する。
-    public static void setQuizData(int id, int ImageUrl, String fishId, String question, String[] choices) {
+    public static void setQuizData(int id, int ImageUrl, int fishId, String question, String[] choices) {
         QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
@@ -34,6 +35,7 @@ public class QuizDatabase {
             values.put("choice1", choices[0]);
             values.put("choice2", choices[1]);
             values.put("choice3", choices[2]);
+            Log.d("QuizDatabase", "setQuizData: " + choices[0] +" " + choices[1]+" "+choices[2]);
             try {
                 // データの挿入
                 mDb.insert(QuizSQLiteOpenHelper.TABLE_NAME, null, values);
@@ -60,6 +62,8 @@ public class QuizDatabase {
             quizDetail.setFishId(c.getInt(2));
             quizDetail.setQuestion(c.getString(3));
             quizDetail.setChoices(new String[]{c.getString(4), c.getString(5), c.getString(6)});
+            //シャッフルする
+            quizDetail.shuffleChoices();
             quizDetails.add(quizDetail);
         }
         c.close();

@@ -20,30 +20,29 @@
             </intent-filter>
         </activity>
         <activity android:name=".MovieList.MovieListActivity"
-<<<<<<< HEAD
+                  android:screenOrientation="landscape"
                   android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".ZukanList.ZukanListActivity"
                   android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"
             />
         <activity android:name=".ZukanDetail.ZukanDetaiActivity"
                   android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"
             />
-        <activity android:name=".Quiz.QuizActivity"/>
-        <activity android:name=".panframe.SimplePlayerActivity"/>
-        <activity android:name=".Image.ImageActivity"/>
-        <activity android:name=".Image.ImageSubActivity" />
-=======
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ZukanList.ZukanListActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ZukanDetail.ZukanDetaiActivity"
-            android:screenOrientation="landscape"/>
         <activity android:name=".Quiz.QuizActivity"
-            android:screenOrientation="landscape"/>
+                  android:screenOrientation="landscape"
+            />
         <activity android:name=".panframe.SimplePlayerActivity"
-            android:screenOrientation="landscape"/>
->>>>>>> 3e12e02b829b7788a8ff54af8b1e3c4022852fc0
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".Image.ImageActivity"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".Image.ImageSubActivity"
+                  android:screenOrientation="landscape"
+            />
     </application>
 
 </manifest>

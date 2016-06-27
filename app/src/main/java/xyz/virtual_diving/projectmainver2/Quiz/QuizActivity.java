@@ -44,16 +44,16 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
 
     //QuizDetailに内容をセットする
     private void setQuizDetails() {
-        quizDetails = new ArrayList<QuizDetail>();
         ans = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             QuizDetail quizDetail = new QuizDetail();
-            quizDetail.setChoices(new String[]{"1", "2", "3"});
-            quizDetail.setQuestion("魚を探せ");
+            quizDetail.setId(i);
             quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
-//            quizDetails.add(quizDetail);
+            quizDetail.setFishId(0);
+            quizDetail.setQuestion("魚を探せ");
+            quizDetail.setChoices(new String[]{"1", "2", "3"});
             //データベースに入れます
-            QuizDatabase.setQuizData(i, quizDetail.getImageUrl(), quizDetail.getFishId(), quizDetail.getQuestion(), quizDetail.getChoices());
+            QuizDatabase.setQuizData(quizDetail);
         }
         //データベースから取得
         quizDetails = QuizDatabase.getQuizDetailsAll();

@@ -3,7 +3,6 @@ package xyz.virtual_diving.projectmainver2.DB;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -19,23 +18,22 @@ public class QuizDatabase {
     private static String ORDER_BY = "id" + " ASC";//並べる順
 
     // データベースに登録する。
-    public static void setQuizData(int id, int ImageUrl, int fishId, String question, String[] choices) {
+    public static void setQuizData(QuizDetail quizDetail) {
         QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
         mDb = helper.getWritableDatabase();
         Cursor c = mDb.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
-        if(!c.moveToPosition(id)) {
+        if(!c.moveToPosition(quizDetail.getId())) {
 
             // ContentValuesにデータを格納
             ContentValues values = new ContentValues();
             // カラム名に値を渡す
-            values.put("id", id);
-            values.put("ImageUrl", ImageUrl);
-            values.put("fishId", fishId);
-            values.put("question", question);
-            values.put("choice1", choices[0]);
-            values.put("choice2", choices[1]);
-            values.put("choice3", choices[2]);
-            Log.d("QuizDatabase", "setQuizData: " + choices[0] +" " + choices[1]+" "+choices[2]);
+            values.put("id", quizDetail.getId());
+            values.put("ImageUrl", quizDetail.getImageUrl());
+            values.put("fishId", quizDetail.getFishId());
+            values.put("question", quizDetail.getQuestion());
+            values.put("choice1", quizDetail.getChoices()[0]);
+            values.put("choice2", quizDetail.getChoices()[1]);
+            values.put("choice3", quizDetail.getChoices()[2]);
             try {
                 // データの挿入
                 mDb.insert(QuizSQLiteOpenHelper.TABLE_NAME, null, values);
@@ -62,7 +60,7 @@ public class QuizDatabase {
             quizDetail.setFishId(c.getInt(2));
             quizDetail.setQuestion(c.getString(3));
             quizDetail.setChoices(new String[]{c.getString(4), c.getString(5), c.getString(6)});
-            //シャッフルする
+            //選択肢をシャッフルする
             quizDetail.shuffleChoices();
             quizDetails.add(quizDetail);
         }
@@ -71,29 +69,5 @@ public class QuizDatabase {
 
         return quizDetails;
     }
-
-
-    // id に対応するすべてのデータを返す
-//    public static void getAllDatabyId(ZukanDetail item, int id) {
-//        ZukanSQLiteOpenHelper helper = new ZukanSQLiteOpenHelper(ZukanDetaiActivity.getContext());
-//        mDb = helper.getWritableDatabase();
-//
-//        String[] contents = new String[3];
-//        Cursor c = mDb.query(ZukanSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
-//            if (c.moveToPosition(id)) {
-//                item.setId(c.getInt(0));
-//                item.setImageUrl(c.getInt(1));
-//                item.setFishName(c.getString(2));
-//                item.setAbstract(c.getString(3));
-//                contents[0] = c.getString(4);
-//                contents[1] = c.getString(5);
-//                contents[2] = c.getString(6);
-//                item.setContents(contents);
-//
-//            }
-//            c.close();
-//            mDb.close();
-//
-//    }
 
 }

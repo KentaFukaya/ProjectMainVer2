@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
-    tools:context="xyz.virtual_diving.projectmainver2.HomeActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="xyz.virtual_diving.projectmainver2.HomeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:background="@drawable/homeactivity_background"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false">
+        android:layout_alignParentStart="false"
+        android:background="@drawable/homeactivity_background"
+        android:scaleType="centerCrop">
         <!--背景が単色の時は #DDF7F0 にしてました-->
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/FGButton"
-            android:background="@drawable/homeactivity_fgicon"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="bottom" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/Button"
-            android:text="ImageList"
             android:layout_alignParentTop="true"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:background="@drawable/homeactivity_fgicon"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="xl"
+            bootstrap:typicon="ty_camera"/>
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Logo"
-        android:src="@drawable/homeactivity_titlelogo"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="124dp"
-        android:background="#00ffffff" />
+        android:background="#00ffffff"
+        android:src="@drawable/homeactivity_titlelogo"/>
 
     <ImageButton
+        android:id="@+id/VDButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/VDButton"
-        android:background="@drawable/homeactivity_dmicon"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp" />
+        android:layout_marginBottom="41dp"
+        android:background="@drawable/homeactivity_dmicon"/>
 
 </RelativeLayout>

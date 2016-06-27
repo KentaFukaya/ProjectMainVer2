@@ -23,9 +23,14 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile files('libs/panframe-1.9.jar')
+
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
 
     compile	'com.google.code.gson:gson:2.3.1'
     compile	files('libs/NCMB.jar')
+
+    compile 'com.beardedhen:androidbootstrap:2.2.0'
+    compile 'com.beardedhen:androidbootstrap:+'
+
 }

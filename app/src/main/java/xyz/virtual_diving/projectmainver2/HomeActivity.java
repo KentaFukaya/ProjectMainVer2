@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 import xyz.virtual_diving.projectmainver2.Image.ImageActivity;
 import xyz.virtual_diving.projectmainver2.MovieList.MovieListActivity;
 import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
@@ -14,11 +17,12 @@ import xyz.virtual_diving.projectmainver2.ZukanList.ZukanListActivity;
 
 public class HomeActivity extends Activity {
     private ImageButton DM_btm, FG_btm;
-    private Button Image_btm;
+    private BootstrapButton Image_btm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.homeactivity_main);
 
         DM_btm = (ImageButton)findViewById(R.id.VDButton); //ダイビングアクティビティに飛ぶボタンのidを渡す
@@ -40,7 +44,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        Image_btm = (Button)findViewById(R.id.Button); //スクリーンショット共有アクティビティ用(仮)
+        Image_btm = (BootstrapButton)findViewById(R.id.Button); //スクリーンショット共有アクティビティ用(仮)
         Image_btm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

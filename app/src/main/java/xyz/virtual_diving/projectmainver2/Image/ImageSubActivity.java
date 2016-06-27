@@ -28,6 +28,7 @@ public class ImageSubActivity extends Activity {
 
         this.comment = CommentGenerator.createCommentData(getApplication());
         Intent intent = getIntent();
+        //個別画像ページのページ番号を取得
         int pageNumber = intent.getIntExtra("PageNumber", 0);
         ArrayList<Bitmap> list = new ArrayList<>(ImageActivity.getList());
 

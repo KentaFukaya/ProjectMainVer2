@@ -248,7 +248,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
             if (_pfasset == null)
-                loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
+                loadVideo("android.resource://" + getPackageName() + "/" + R.raw.sakana2);
 
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
                 PushPlayButtonTime = _pfasset.getPlaybackTime();

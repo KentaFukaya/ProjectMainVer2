@@ -21,22 +21,28 @@ public class VideoListDatabase {
     public static void setData(int id, String Title, String Contents, int ImageID, int ViewCount, String url) {
         VideoListSQLiteOpenHelper helper = new VideoListSQLiteOpenHelper(MovieListActivity.getContext());
         mDb = helper.getWritableDatabase();
+        Cursor c = mDb.query(VideoListSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
+        if (!c.moveToPosition(id)) {
+            // ContentValuesにデータを格納
+            ContentValues values = new ContentValues();
+            // カラム名に値を渡す
+            values.put("id", id);
+            values.put("TitleText", Title);
+            values.put("ContentsText", Contents);
+            values.put("ImageID", ImageID);
+            values.put("ViewCount", ViewCount);
+            values.put("MovieURL", url);
 
-        // ContentValuesにデータを格納
-        ContentValues values = new ContentValues();
-        // カラム名に値を渡す
-        values.put("id", id);
-        values.put("TitleText", Title);
-        values.put("ContentsText", Contents);
-        values.put("ImageID", ImageID);
-        values.put("ViewCount", ViewCount);
-        values.put("MovieURL", url);
-        try {
-            // データの挿入
-            mDb.insert(VideoListSQLiteOpenHelper.TABLE_NAME, null, values);
-        } finally {
-            mDb.close();
+            try {
+                // データの挿入
+                mDb.insert(VideoListSQLiteOpenHelper.TABLE_NAME, null, values);
+            } finally {
+                c.close();
+                mDb.close();
+            }
         }
+        c.close();
+        mDb.close();
     }
 
     // id に対応するデータを返す

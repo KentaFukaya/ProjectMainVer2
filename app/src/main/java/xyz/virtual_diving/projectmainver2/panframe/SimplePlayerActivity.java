@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
+
 import com.panframe.android.lib.PFAsset;
 import com.panframe.android.lib.PFAssetObserver;
 import com.panframe.android.lib.PFAssetStatus;
@@ -83,13 +84,15 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         setContentView(R.layout.simpleplayer_main);
 
         _frameContainer = (ViewGroup) findViewById(R.id.framecontainer);
-        _frameContainer.setBackgroundColor(0xFF000000);
+        _frameContainer.setBackgroundColor(0xFFFFFFFF);
 
+        /*各ボタンのID取得*/
         _playButton = (Button) findViewById(R.id.playbutton);
         _stopButton = (Button) findViewById(R.id.stopbutton);
         _touchButton = (Button) findViewById(R.id.touchbutton);
         _scrubber = (SeekBar) findViewById(R.id.scrubber);
 
+        /*各ボタンのクリックリスナ*/
         _playButton.setOnClickListener(playListener);
         _stopButton.setOnClickListener(stopListener);
         _touchButton.setOnClickListener(touchListener);
@@ -98,6 +101,8 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         _scrubber.setEnabled(false);
         showControls(true);
 
+
+        showControls(true);
 
         /*------------------------------------------------------------------------------------*/
         //20160623 kentafukaya add
@@ -153,17 +158,19 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         _pfview.getView();
         _pfview.displayAsset(_pfasset);
         _pfview.setNavigationMode(_currentNavigationMode);
-       /*
+
+        /*
         _pfview.setBlindSpotImage(BitmapFactory.decodeResource(getResources(), R.raw.blackspot));
         _pfview.setBlindSpotPosition(1);
         _pfview.setBlindSpotScale(1.5f);
-        
+        */
         
         PFHotspot hp1 = _pfview.createHotspot(BitmapFactory.decodeResource(getResources(), R.raw.hotspot));
         hp1.setTag(10);
         hp1.setCoordinates(60, 40, 0);
         hp1.setClickListener(this);
-        
+
+        /*
         PFHotspot hp2 = _pfview.createHotspot(BitmapFactory.decodeResource(getResources(), R.raw.hotspot));
         hp2.setTag(20);
         hp2.setCoordinates(0, 40, 0);
@@ -196,6 +203,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
             case PLAYING:
                 Log.d("SimplePlayer", "Playing");
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                Log.d("TEST", "onStatusMessage: ");
                 _scrubber.setEnabled(true);
                 _scrubber.setMax((int) asset.getDuration());
                 _playButton.setText("pause");
@@ -248,8 +256,14 @@ private OnClickListener testButton = new OnClickListener() {
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
+<<<<<<< HEAD
             if (_pfasset == null) loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
             Log.d("TEST", "_frameContainer.getChildCount() "+_frameContainer.getChildCount());
+=======
+            if (_pfasset == null)
+                loadVideo("android.resource://" + getPackageName() + "/" + R.raw.sakana2);
+
+>>>>>>> ae0c28b39893bb6888d3769136d21d8d452e212b
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
                 PushPlayButtonTime = _pfasset.getPlaybackTime();
                 _pfasset.pause();
@@ -261,7 +275,6 @@ private OnClickListener testButton = new OnClickListener() {
                 _pfasset.play();
             }
             Log.d("TEST", "PushPlayButton = "+PushPlayButtonTime);//現在の再生時間の取得
-
         }
     };
 
@@ -372,15 +385,16 @@ private OnClickListener testButton = new OnClickListener() {
      */
     public void onClick(PFHotspot hotspot) {
         hotspot.animate();
-//		hotspot.setEnabled(false);
+		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
+        saveCapture(this.getWindow().getDecorView(),file);//キャプチャーの取得
     }
 
 
     /*------------------------------------------------------------------------------------------------*/
     /*20160623 KentaFukaya
     * 画面キャプチャーを取るために、増やしました。
-    */
+*/
 
 
     /**

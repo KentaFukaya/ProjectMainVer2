@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="xyz.virtual_diving.projectmainver2">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MovieList.MovieListActivity"/>
-        <activity android:name=".ZukanList.ZukanListActivity"/>
-        <activity android:name=".ZukanDetail.ZukanDetaiActivity"/>
-        <activity android:name=".panframe.SimplePlayerActivity"/>
-        <activity android:name=".Quiz.QuizActivity"/>
+        <activity android:name=".MovieList.MovieListActivity"
+                  android:screenOrientation="landscape"
+                  android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".ZukanList.ZukanListActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".ZukanDetail.ZukanDetaiActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".Quiz.QuizActivity"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".panframe.SimplePlayerActivity"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".Image.ImageActivity"
+                  android:screenOrientation="landscape"
+            />
+        <activity android:name=".Image.ImageSubActivity"
+                  android:screenOrientation="landscape"
+            />
     </application>
 
 </manifest>

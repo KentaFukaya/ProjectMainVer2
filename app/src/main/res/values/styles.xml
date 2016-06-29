@@ -6,14 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
-    <style name="Animation" parent="android:Animation"/>
 
-    <style name="Animation.Activity" parent="android:Animation.Activity">
+    <!--動画リスト画面遷移のアニメーションと図鑑リスト画面遷移のアニメーション
+    　　作成してるけど全体に反映されるので、まだ実装してません
+    <item name="android:windowAnimationStyle">@style/***Animation.Activity</item>
+        を一番上のstyleに入れる。一つしか定義できない-->
+    <style name="DougaAnimation" parent="android:Animation"/>
+    <style name="DougaAnimation.Activity" parent="android:Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@animator/page_down</item>
         <item name="android:activityOpenExitAnimation">@animator/page_up</item>
     </style>
+
+    <style name="ZukanAnimation" parent="android:Animation" />
+    <style name="ZukanAnimation.Activity" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@animator/zukan_in_up</item>
+        <item name="android:activityOpenExitAnimation">@animator/zukan_out_down</item>
+        <item name="android:activityCloseEnterAnimation">@animator/zukan_in_down</item>
+        <item name="android:activityCloseExitAnimation">@animator/zukan_out_up</item>
+    </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

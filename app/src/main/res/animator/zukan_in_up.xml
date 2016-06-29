@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--図鑑に遷移するときの上側（図鑑画面）-->
+
+    <!--durationは遅めにしてます
+       値が小さいほど早くなります-->
+
+    <translate
+        android:duration="500"
+        android:fromYDelta="-100%"
+        android:toYDelta="0"
+        android:fillAfter="true"
+        android:fillEnabled="true"/>
+
+
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+
+</set>

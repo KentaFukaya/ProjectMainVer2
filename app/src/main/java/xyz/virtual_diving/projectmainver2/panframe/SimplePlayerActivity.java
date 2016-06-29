@@ -256,14 +256,14 @@ private OnClickListener testButton = new OnClickListener() {
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
-<<<<<<< HEAD
+            /*
             if (_pfasset == null) loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
             Log.d("TEST", "_frameContainer.getChildCount() "+_frameContainer.getChildCount());
-=======
+            */
+
             if (_pfasset == null)
                 loadVideo("android.resource://" + getPackageName() + "/" + R.raw.sakana2);
 
->>>>>>> ae0c28b39893bb6888d3769136d21d8d452e212b
             if (_pfasset.getStatus() == PFAssetStatus.PLAYING) {
                 PushPlayButtonTime = _pfasset.getPlaybackTime();
                 _pfasset.pause();
@@ -281,6 +281,7 @@ private OnClickListener testButton = new OnClickListener() {
     /**
      * Click listener for the stop/back button
      */
+
 
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
@@ -387,7 +388,7 @@ private OnClickListener testButton = new OnClickListener() {
         hotspot.animate();
 		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
-        saveCapture(this.getWindow().getDecorView(),file);//キャプチャーの取得
+        saveCapture(this.getWindow().getDecorView(),file0);//キャプチャーの取得
     }
 
 

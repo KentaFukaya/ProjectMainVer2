@@ -47,10 +47,10 @@ public class QuizDatabase {
 
     // データベース上のすべてのdataをQuizDetailsで返す。
     public static ArrayList<QuizDetail> getQuizDetailsAll() {
-        ArrayList<QuizDetail> quizDetails = new ArrayList<QuizDetail>();
+        ArrayList<QuizDetail> quizDetails = new ArrayList<>();
 
         QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
-        mDb = helper.getWritableDatabase();
+        mDb = helper.getReadableDatabase();
         Cursor c = mDb.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM, null, null, null, null, ORDER_BY);//queryの実行
 
         while (c.moveToNext()) {

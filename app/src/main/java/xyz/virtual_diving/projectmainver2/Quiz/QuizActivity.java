@@ -39,7 +39,9 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         QuizViewPager viewPager = (QuizViewPager) findViewById(R.id.quiz_viewpager);
         final QuizFragmentPagerAdapter adapter = new QuizFragmentPagerAdapter(manager, quizDetails);
 
-        viewPager.setAdapter(adapter);
+        if (viewPager != null) {
+            viewPager.setAdapter(adapter);
+        }
     }
 
     //QuizDetailに内容をセットする

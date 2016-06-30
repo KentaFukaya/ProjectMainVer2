@@ -18,7 +18,7 @@ class QuizSQLiteOpenHelper extends SQLiteOpenHelper {
     static final int DB_VERSION = 1;
 
     static final String CREATE_TABLE = "create table " + TABLE_NAME + "( " +
-            "id integer primary key , " +
+            "_id integer primary key not null, " +
             "ImageUrl integer not null, " +
             "fishId integer not null, " +
             "question text not null, " +

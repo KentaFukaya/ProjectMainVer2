@@ -90,7 +90,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="63dp">
+            android:layout_height="63dp"
+            android:layout_weight="0.22">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="86dp"
                 android:text="問題文が表示されるはず"
                 android:id="@+id/quizContent"
                 android:layout_margin="10dp"

@@ -41,8 +41,9 @@ public class QuizFragment extends Fragment {
         TextView quizpage = (TextView) view.findViewById(R.id.quizpage);
         quizpage.setText("第" + (position + 1) + "問 ");
 
+        //魚の画像
         ImageView imageView = (ImageView) view.findViewById(R.id.QuizDetail_pic);
-        imageView.setImageResource(quizDetail.getImageUrl());
+        imageView.setImageResource(quizDetail.getImageUrl() + args.getInt("fishIcon"));
 
         /*ボタンで遷移の実装*/
         choice1 = (Button) view.findViewById(R.id.choice1);

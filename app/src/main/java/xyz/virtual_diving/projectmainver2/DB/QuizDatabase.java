@@ -14,8 +14,8 @@ import xyz.virtual_diving.projectmainver2.Quiz.QuizDetail;
  */
 public class QuizDatabase {
     private static SQLiteDatabase mDb;
-    private static String[] FROM = {"id", "ImageUrl", "fishId", "question", "choice1", "choice2", "choice3"};
-    private static String ORDER_BY = "id" + " ASC";//並べる順
+    private static String[] FROM = {"_id", "ImageUrl", "fishId", "question", "choice1", "choice2", "choice3"};
+    private static String ORDER_BY = "_id" + " ASC";//並べる順
 
     // データベースに登録する。
     public static void setQuizData(QuizDetail quizDetail) {
@@ -27,7 +27,7 @@ public class QuizDatabase {
             // ContentValuesにデータを格納
             ContentValues values = new ContentValues();
             // カラム名に値を渡す
-            values.put("id", quizDetail.getId());
+            values.put("_id", quizDetail.getId());
             values.put("ImageUrl", quizDetail.getImageUrl());
             values.put("fishId", quizDetail.getFishId());
             values.put("question", quizDetail.getQuestion());

@@ -33,6 +33,7 @@
             />
         <activity android:name=".Quiz.QuizActivity"
                   android:screenOrientation="landscape"
+                  android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".panframe.SimplePlayerActivity"
                   android:screenOrientation="landscape"

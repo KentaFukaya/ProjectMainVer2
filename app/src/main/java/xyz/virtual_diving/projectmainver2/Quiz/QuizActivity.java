@@ -94,7 +94,10 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
         }
         //データベースから取得
 //        this.quizDetails = QuizDatabase.getQuizDetailsAll();
-        this.quizDetails = QuizDatabase.getQuizDetails(fishIcon);
+        //データベースのfishIdを指定して取得
+//        this.quizDetails = QuizDatabase.getQuizDetails(fishIcon);
+        //assetsデータベースすべて取得
+        this.quizDetails = QuizDatabase.getQuizDetailsAllFromQuiztest(fishIcon+1);
 
     }
 

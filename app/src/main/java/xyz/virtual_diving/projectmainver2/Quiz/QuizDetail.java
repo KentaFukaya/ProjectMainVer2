@@ -17,6 +17,10 @@ public class QuizDetail implements Serializable {
     private String answer;
     private int ImageUrl;
 
+
+
+    private String ImageName;
+
     public String getQuestion() {
         return question;
     }
@@ -32,6 +36,10 @@ public class QuizDetail implements Serializable {
     public void setChoices(String[] choices) {
         this.choices = choices;
         answer = choices[0];
+    }
+
+    public void setImageName(String imageName) {
+        ImageName = imageName;
     }
 
     public int getImageUrl() {
@@ -60,6 +68,11 @@ public class QuizDetail implements Serializable {
 
     public void setFishId(int fishId) {
         this.fishId = fishId;
+    }
+
+
+    public String getImageName() {
+        return ImageName;
     }
 
     //選択肢をシャッフル

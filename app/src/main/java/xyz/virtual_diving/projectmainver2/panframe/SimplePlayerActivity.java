@@ -69,7 +69,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     //20160623 kentafukaya add
     float PushPlayButtonTime;
     File file0 = new File(Environment.getExternalStorageDirectory() + "/capture0.png");
-    Button _testButton;
+
 
     /**
      * Creation and initalization of the Activitiy.
@@ -110,9 +110,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
 
         // 指定したファイル名が無ければ作成する。
         file0.getParentFile().mkdir();
-        _testButton = (Button) findViewById(R.id.testbutton);
-        _testButton.setOnClickListener(testButton);
-
 
     }
 
@@ -246,11 +243,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
                 break;
         }
     }
-private OnClickListener testButton = new OnClickListener() {
-        public void onClick(View v) {
-            saveCapture(_pfview.getView(),file0);//キャプチャーの取得
-        }
-    };
+
     /**
      * Click listener for the play/pause button
      */

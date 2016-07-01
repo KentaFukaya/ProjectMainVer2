@@ -43,7 +43,7 @@ public class ZukanDetaiActivity extends AppCompatActivity implements NavigationV
         //navgaitonbarの作成
         makeNavigationBar();
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id",0);
+        final int id = intent.getIntExtra("id",0);
 
         ctx = this;
        //setZukanDetail();
@@ -66,6 +66,7 @@ public class ZukanDetaiActivity extends AppCompatActivity implements NavigationV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),QuizActivity.class); //図鑑アクティビティにに飛ぶ処理
+                intent.putExtra("fishIcon", id);//魚のIDを詰める
                 startActivity(intent);
                 Log.d("Zukan_detail", "onClick: QuziButton");
             }

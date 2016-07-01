@@ -43,7 +43,7 @@
             <Button
                 android:layout_width="169dp"
                 android:layout_height="64dp"
-                android:text="クイズ画面に戻る"
+                android:text="図鑑に戻る"
                 android:id="@+id/quiz_quit"
                 android:layout_gravity="bottom|center_horizontal" />
         </LinearLayout>

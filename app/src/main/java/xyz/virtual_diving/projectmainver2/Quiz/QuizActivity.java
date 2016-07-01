@@ -54,30 +54,37 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
     private void setQuizDetails() {
         ArrayList<QuizDetail> quizDetails = new ArrayList<>();
         QuizDetail quizDetail;
-
         //1
         quizDetail = new QuizDetail();
         quizDetail.setId(1);
-        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0 + fishIcon);
-        quizDetail.setFishId(0);
-        quizDetail.setQuestion("ウロコから数えた魚の寿命、１番長生きなのは？");
-        quizDetail.setChoices(new String[]{"コイ", "ヒラメ", "タラ"});
+        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
+        quizDetail.setFishId(1);
+        quizDetail.setQuestion("ヤリイカの他の呼び方があります。それは何でしょう？");
+        quizDetail.setChoices(new String[]{"シャクハチイカ", "シャクキュウイカ", "シャクジュウイカ"});
         quizDetails.add(quizDetail);
         //2
         quizDetail = new QuizDetail();
         quizDetail.setId(2);
-        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0 + fishIcon);
+        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
         quizDetail.setFishId(0);
-        quizDetail.setQuestion("魚の血は何色？");
-        quizDetail.setChoices(new String[]{"赤色", "青色", "緑色"});
+        quizDetail.setQuestion("マアジの旬はいつでしょう？");
+        quizDetail.setChoices(new String[]{"夏", "春", "冬"});
         quizDetails.add(quizDetail);
         //3
         quizDetail = new QuizDetail();
         quizDetail.setId(3);
-        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0 + fishIcon);
-        quizDetail.setFishId(0);
-        quizDetail.setQuestion("海で生まれて、川で育つ魚は？");
-        quizDetail.setChoices(new String[]{"ウナギ", "アユ", "サケ"});
+        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
+        quizDetail.setFishId(2);
+        quizDetail.setQuestion("クロマグロは何科の魚でしょう？");
+        quizDetail.setChoices(new String[]{"サバ科", "アジ科", "タイ科"});
+        quizDetails.add(quizDetail);
+        //4
+        quizDetail = new QuizDetail();
+        quizDetail.setId(4);
+        quizDetail.setImageUrl(R.drawable.zukanlist_sakana0);
+        quizDetail.setFishId(3);
+        quizDetail.setQuestion("マダイの大きさは約何cmでしょう？");
+        quizDetail.setChoices(new String[]{"120cm", "40cm", "80cm"});
         quizDetails.add(quizDetail);
 
         for (int i = 0; i < quizDetails.size(); i++) {
@@ -86,7 +93,9 @@ public class QuizActivity extends AppCompatActivity implements QuizResultFragmen
             QuizDatabase.setQuizData(quizDetails.get(i));
         }
         //データベースから取得
-        this.quizDetails = QuizDatabase.getQuizDetailsAll();
+//        this.quizDetails = QuizDatabase.getQuizDetailsAll();
+        this.quizDetails = QuizDatabase.getQuizDetails(fishIcon);
+
     }
 
     public static int getAns() {

@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 public class QuizFragmentPagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<QuizDetail> quizDetails;
+    int fishIcon;
 
-    public QuizFragmentPagerAdapter(FragmentManager fm, ArrayList<QuizDetail> quizDetails) {
+    public QuizFragmentPagerAdapter(FragmentManager fm, ArrayList<QuizDetail> quizDetails, int fishIcon) {
         super(fm);
         this.quizDetails = quizDetails;
+        this.fishIcon = fishIcon;
         //rawContents = choices;
     }
     @Override
@@ -25,6 +27,7 @@ public class QuizFragmentPagerAdapter extends FragmentStatePagerAdapter {
             Bundle bundle = new Bundle();
             bundle.putInt("page", position);
             bundle.putSerializable("quizDetail", quizDetails.get(position));
+            bundle.putInt("fishIcon", fishIcon);
             // Fragment をつくり Bundle をセットする
             QuizFragment fragment = new QuizFragment();
             fragment.setArguments(bundle);

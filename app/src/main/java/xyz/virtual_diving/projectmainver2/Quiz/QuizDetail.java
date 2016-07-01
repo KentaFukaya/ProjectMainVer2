@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by b1014100 on 2016/06/13.
+/*
+ * Created by b1014159
  */
 public class QuizDetail implements Serializable {
 
@@ -68,9 +68,7 @@ public class QuizDetail implements Serializable {
         List<String> list= Arrays.asList(getChoices());
         // リストの並びをシャッフルします。
         Collections.shuffle(list);
-        // listから配列へ戻します。
-        String[] choices2 = list.toArray(new String[list.size()]);
-        //シャッフルしたものをセットする
-        this.choices = choices2;
+        //listから配列へ戻し、シャッフルしたものをセットする
+        this.choices = list.toArray(new String[list.size()]);
     }
 }

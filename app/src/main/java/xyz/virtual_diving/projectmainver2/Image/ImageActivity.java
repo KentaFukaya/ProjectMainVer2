@@ -1,4 +1,4 @@
-package xyz.virtual_diving.projectmainver2.Image;
+                                                        package xyz.virtual_diving.projectmainver2.Image;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,7 +31,7 @@ public class ImageActivity extends AppCompatActivity {
         comment = CommentGenerator.createCommentData(getApplication());
 
         // ループ回数10(要検討)
-        for (int id = 0; id <= 10; id++) {
+        for (int id = 0; id <= 11; id++) {
             new AsyncTask<String, Void, Bitmap>() {
 
                 @Override
@@ -84,5 +84,12 @@ public class ImageActivity extends AppCompatActivity {
     // ArrayList<Bitmap> をインテントで渡せなかったため作成
     protected static ArrayList<Bitmap> getList(){
         return list;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+        gridView.setSelection(page);
     }
 }

@@ -3,7 +3,6 @@ package xyz.virtual_diving.projectmainver2.Quiz;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +43,8 @@ public class QuizFragment extends Fragment {
 
         //魚の画像
         ImageView imageView = (ImageView) view.findViewById(R.id.QuizDetail_pic);
-        imageView.setImageResource(quizDetail.getImageUrl() + args.getInt("fishIcon"));
+//        imageView.setImageResource(quizDetail.getImageUrl() + args.getInt("fishIcon"));
+        imageView.setImageResource(getResources().getIdentifier(quizDetail.getImageName(), "drawable", getActivity().getPackageName()));
 
         /*ボタンで遷移の実装*/
         choice1 = (Button) view.findViewById(R.id.choice1);
@@ -52,7 +52,6 @@ public class QuizFragment extends Fragment {
         //ボタンのテキストをデフォルトの大文字から小文字にする
         choice1.setAllCaps(false);
         choice1.setOnClickListener(choiceButtonClickListener);
-        Log.d("TAG", "onCreateView: " + quizDetail.getChoices()[0]);
 
         choice2 = (Button) view.findViewById(R.id.choice2);
         choice2.setText(quizDetail.getChoices()[1]);

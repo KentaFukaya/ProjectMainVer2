@@ -70,7 +70,7 @@ public class QuizDatabase {
         return quizDetails;
     }
 
-    // データベース上のすべてのdataをQuizDetailsで返す。
+    // データベース上の指定fishIdのdataをQuizDetailsで返す。
     public static ArrayList<QuizDetail> getQuizDetails(int fishId) {
         ArrayList<QuizDetail> quizDetails = new ArrayList<>();
 
@@ -95,4 +95,33 @@ public class QuizDatabase {
         return quizDetails;
     }
 
+    // Fromassets テスト
+    public static ArrayList<QuizDetail> getQuizDetailsAllFromQuiztest(int fishId) {
+        ArrayList<QuizDetail> quizDetails = new ArrayList<>();
+
+//        QuizSQLiteOpenHelper helper = new QuizSQLiteOpenHelper(QuizActivity.getContext());
+//        mDb = helper.getReadableDatabase();
+
+        QuizSQLiteOpenFromAssets helper = new QuizSQLiteOpenFromAssets(QuizActivity.getContext(), "Quiztest.db", null,1);
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        Cursor c = db.query(QuizSQLiteOpenHelper.TABLE_NAME, FROM,"fishId = ?", new String[]{ "" + fishId }, null, null, ORDER_BY);//queryの実行
+
+        while (c.moveToNext()) {
+            QuizDetail quizDetail = new QuizDetail();
+            quizDetail.setId(c.getInt(0));
+            quizDetail.setImageUrl(c.getInt(1));
+            quizDetail.setFishId(c.getInt(2));
+            quizDetail.setQuestion(c.getString(3));
+            quizDetail.setChoices(new String[]{c.getString(4), c.getString(5), c.getString(6)});
+            //選択肢をシャッフルする
+            quizDetail.shuffleChoices();
+            quizDetail.setImageName(c.getString(1));
+            quizDetails.add(quizDetail);
+        }
+        c.close();
+        db.close();
+
+        return quizDetails;
+    }
 }

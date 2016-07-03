@@ -32,7 +32,6 @@
             android:layout_alignTop="@+id/playbutton"
             android:background="#AA000000"
             android:text="stop"
-            android:textColor="#fff"
             android:textSize="14sp"
             android:width="80dp" />
 

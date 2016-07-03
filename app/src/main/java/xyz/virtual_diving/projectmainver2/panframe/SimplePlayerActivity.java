@@ -84,7 +84,6 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         setContentView(R.layout.simpleplayer_main);
 
         _frameContainer = (ViewGroup) findViewById(R.id.framecontainer);
-        _frameContainer.setBackgroundColor(0xFFFFFFFF);
 
         /*各ボタンのID取得*/
         _playButton = (Button) findViewById(R.id.playbutton);

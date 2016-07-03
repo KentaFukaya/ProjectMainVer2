@@ -57,8 +57,8 @@ public class MovieListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String msg = position + "番目のアイテムがクリックされました";
                 Intent intent = new Intent(getActivity(), SimplePlayerActivity.class);
-                Toast.makeText(getActivity(), getMovieURLbyId(list1, position), Toast.LENGTH_LONG).show();
-                Toast.makeText(getActivity(), getMovieURLbyId(list0, position), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), getMovieURLbyId(list1, position), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), getMovieURLbyId(list0, position), Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });

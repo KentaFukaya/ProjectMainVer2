@@ -31,8 +31,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignTop="@+id/playbutton"
             android:background="#AA000000"
-            android:text="stop"
             android:textColor="#fff"
+            android:text="stop"
             android:textSize="14sp"
             android:width="80dp" />
 

@@ -39,10 +39,9 @@
                         android:layout_height="wrap_content"
                         android:text="第Ｘ問"
                         android:id="@+id/quizpage"
-                        android:textSize="24dp" />
+                        android:textSize="20dp" />
 
                     <ImageView
-                        android:layout_marginTop="10dp"
                         android:layout_width="359dp"
                         android:layout_height="150dp"
                         android:id="@+id/QuizDetail_pic"
@@ -53,37 +52,35 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="34dp"
                     android:text="New Button"
                     android:id="@+id/choice1"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/quizactivity_btn01"
-                    android:layout_margin="8dp" />
+                    android:layout_margin="10dp" />
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="34dp"
                     android:text=" Button"
                     android:id="@+id/choice2"
                     android:background="@drawable/quizactivity_btn02"
-                    android:layout_margin="8dp" />
+                    android:layout_margin="10dp" />
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="34dp"
                     android:text="New Button"
                     android:id="@+id/choice3"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/quizactivity_btn03"
-                    android:layout_margin="8dp" />
+                    android:layout_margin="10dp" />
 
             </LinearLayout>
 
@@ -102,7 +99,7 @@
                 android:id="@+id/text"
                 android:text="問題"
                 android:textSize="24dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_margin="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"

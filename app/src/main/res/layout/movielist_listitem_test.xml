@@ -8,29 +8,28 @@
     <ImageView
         android:src="@drawable/zukanlist_sakana0"
         android:id="@+id/MovieList_itemimage"
-        android:padding="5dp"
         android:layout_width="140dp"
         android:layout_height="140dp"
+        android:layout_marginLeft="10dp"
         />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="100dp"
         android:layout_height="137dp"
         android:orientation="vertical"
         android:layout_weight="1"
         android:weightSum="1">
         <TextView
-            android:textColor="#015DB2"
             android:text="タイトルa"
             android:id="@+id/MovieList_titletext"
             android:textSize="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.10" />
+            android:layout_weight="0.15" />
         <TextView
             android:text="本文"
-            android:textSize="0dp"
             android:id="@+id/MovieList_contentstext"
             android:layout_width="293dp"
             android:layout_height="wrap_content"
@@ -38,9 +37,10 @@
         <TextView
             android:text="再生数"
             android:id="@+id/MovieList_viewconut"
-            android:textSize="20dp"
+            android:textSize="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
     </LinearLayout>
     <ImageView
         android:paddingTop="50dp"

@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -91,5 +92,15 @@ public class ImageActivity extends AppCompatActivity {
         super.onResume();
         GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setSelection(page);
+    }
+
+    //戻るアニメーション設定
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode== KeyEvent.KEYCODE_BACK){
+            finish();
+            overridePendingTransition(R.animator.page_in_right, R.animator.page_out_left);
+        }
+        return true;
     }
 }

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -140,12 +141,14 @@ public class MovieListActivity extends AppCompatActivity implements NavigationVi
         if (id == R.id.nav_gallery) {
             Intent intent = new Intent(this, ZukanListActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.animator.page_in_up, R.animator.page_out_down);
             // Handle the camera action
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(this, ImageActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.animator.page_in_left, R.animator.page_out_right);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -188,4 +191,13 @@ public class MovieListActivity extends AppCompatActivity implements NavigationVi
         return true;
     }
 
+    //戻るアニメーション設定
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode== KeyEvent.KEYCODE_BACK){
+            finish();
+            overridePendingTransition(R.animator.page_in_up, R.animator.page_out_down);
+        }
+        return true;
+    }
 }

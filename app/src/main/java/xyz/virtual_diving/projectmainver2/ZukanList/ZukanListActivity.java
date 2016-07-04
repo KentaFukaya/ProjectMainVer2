@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -173,9 +174,11 @@ public class ZukanListActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.nav_slideshow) {
             Intent intent = new Intent(this, MovieListActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.animator.page_in_down, R.animator.page_out_up);
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(this, ImageActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.animator.page_in_left, R.animator.page_out_right);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -215,6 +218,16 @@ public class ZukanListActivity extends AppCompatActivity implements NavigationVi
     public boolean onOptionsItemSelected(MenuItem item) {
         // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         mActions.show();
+        return true;
+    }
+
+    //戻るアニメーション設定
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode== KeyEvent.KEYCODE_BACK){
+            finish();
+            overridePendingTransition(R.animator.page_in_down, R.animator.page_out_up);
+        }
         return true;
     }
 }

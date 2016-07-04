@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -31,7 +30,7 @@ public class HomeActivity extends Activity {
             public  void onClick(View v){
                 Intent intent = new Intent(HomeActivity.this, MovieListActivity.class); //ダイビングアクティビティに飛ぶ処理
                 startActivity(intent);
-                //テストコメント
+                overridePendingTransition(R.animator.page_in_down, R.animator.page_out_up);
             }
         });
 
@@ -41,6 +40,7 @@ public class HomeActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this,ZukanListActivity.class); //図鑑アクティビティにに飛ぶ処理
                 startActivity(intent);
+                overridePendingTransition(R.animator.page_in_up, R.animator.page_out_down);
             }
         });
 
@@ -50,6 +50,7 @@ public class HomeActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this,ImageActivity.class); //アクティビティにに飛ぶ処理
                 startActivity(intent);
+                overridePendingTransition(R.animator.page_in_left, R.animator.page_out_right);
             }
         });
 

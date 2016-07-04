@@ -12,8 +12,6 @@
         android:toYDelta="0"
         android:fillAfter="true"
         android:fillEnabled="true"/>
-
-
     <alpha
         android:duration="500"
         android:fromAlpha="0.0"

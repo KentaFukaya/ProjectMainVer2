@@ -248,6 +248,10 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
      */
     private OnClickListener playListener = new OnClickListener() {
         public void onClick(View v) {
+            /*
+            if (_pfasset == null) loadVideo("android.resource://" + getPackageName() + "/" + R.raw.skyrim360);
+            Log.d("TEST", "_frameContainer.getChildCount() "+_frameContainer.getChildCount());
+            */
 
             if (_pfasset == null)
                 loadVideo("android.resource://" + getPackageName() + "/" + R.raw.sakanafish);
@@ -269,6 +273,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
     /**
      * Click listener for the stop/back button
      */
+
 
     private OnClickListener stopListener = new OnClickListener() {
         public void onClick(View v) {
@@ -375,7 +380,7 @@ public class SimplePlayerActivity extends FragmentActivity implements PFAssetObs
         hotspot.animate();
 		hotspot.setEnabled(false);
         Log.d("SimplePlayer", "Hotspot clicked: " + hotspot.getTag());
-        //saveCapture(this.getWindow().getDecorView(),file);//キャプチャーの取得
+        saveCapture(this.getWindow().getDecorView(),file0);//キャプチャーの取得
     }
 
 

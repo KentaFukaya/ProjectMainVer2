@@ -32,7 +32,7 @@ public class BitmapAdapter extends ArrayAdapter<Bitmap> {
 
         ImageView view = (ImageView) convertView;
         // 画像をグリッド表示するサイズを指定
-        view.setLayoutParams(new GridView.LayoutParams(340, 340));
+        view.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 260));
         view.setImageBitmap(getItem(position));
 
         return view;
